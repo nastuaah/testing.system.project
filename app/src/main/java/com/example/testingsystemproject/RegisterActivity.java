@@ -10,15 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.testing_system.R;
-import com.example.testing_system.helpers.EncryptionHelper;
-import com.example.testing_system.models.User;
-import com.example.testing_system.repositories.SecurityQuestionRepository;
-import com.example.testing_system.repositories.UserRepository;
+
+import com.example.testingsystemproject.models.User;
+import com.example.testingsystemproject.repositories.SecurityQuestionRepository;
+import com.example.testingsystemproject.repositories.UserRepository;
 import com.example.testingsystemproject.repositories.SecurityQuestionRepository;
 import com.example.testingsystemproject.repositories.UserRepository;
 import com.google.android.material.snackbar.Snackbar;
+import com.example.testingsystemproject.helpers.EncryptionHelper;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import java.text.ParseException;

@@ -4,14 +4,14 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.example.testing_system.dao.CategoryDao;
-import com.example.testing_system.dao.QuestionDao;
-import com.example.testing_system.dao.SecurityQuestionDao;
-import com.example.testing_system.dao.UserDao;
-import com.example.testing_system.models.Category;
-import com.example.testing_system.models.Question;
-import com.example.testing_system.models.SecurityQuestion;
-import com.example.testing_system.models.User;
+import com.example.testingsystemproject.dao.CategoryDao;
+import com.example.testingsystemproject.dao.QuestionDao;
+import com.example.testingsystemproject.dao.SecurityQuestionDao;
+import com.example.testingsystemproject.dao.UserDao;
+import com.example.testingsystemproject.models.Category;
+import com.example.testingsystemproject.models.Question;
+import com.example.testingsystemproject.models.SecurityQuestion;
+import com.example.testingsystemproject.models.User;
 
 @Database(entities = { User.class, SecurityQuestion.class, Question.class, Category.class }, version = 1)
 @TypeConverters({ DateConverter.class })

@@ -1,7 +1,7 @@
 package com.example.testingsystemproject.repositories;
 
-import com.example.testing_system.dao.SecurityQuestionDao;
-import com.example.testing_system.database.AppDatabase;
+import com.example.testingsystemproject.dao.SecurityQuestionDao;
+import com.example.testingsystemproject.database.AppDatabase;
 import java.util.List;
 import javax.inject.Singleton;
 
