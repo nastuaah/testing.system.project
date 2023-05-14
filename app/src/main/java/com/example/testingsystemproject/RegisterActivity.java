@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.testing_system.R;
 import com.example.testingsystemproject.helpers.EncryptionHelper;
 import com.example.testingsystemproject.models.User;
 import com.example.testingsystemproject.repositories.SecurityQuestionRepository;
