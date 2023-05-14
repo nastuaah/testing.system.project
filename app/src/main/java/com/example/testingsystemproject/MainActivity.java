@@ -1,4 +1,4 @@
-package com.example.testing_system;
+package com.example.testingsystemproject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.testing_system.question_activities.OptionActivity;
-import com.example.testing_system.repositories.UserRepository;
+import com.example.testingsystemproject.question_activities.OptionActivity;
+import com.example.testingsystemproject.repositories.UserRepository;
 import com.google.android.material.textfield.TextInputLayout;
 import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
