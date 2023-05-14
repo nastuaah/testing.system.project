@@ -10,11 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.testing_system.R;
-import com.example.testingsystemproject.helpers.EncryptionHelper;
-import com.example.testingsystemproject.models.User;
-import com.example.testingsystemproject.repositories.SecurityQuestionRepository;
-import com.example.testingsystemproject.repositories.UserRepository;
+import com.example.testing_system.helpers.EncryptionHelper;
+import com.example.testing_system.models.User;
+import com.example.testing_system.repositories.SecurityQuestionRepository;
+import com.example.testing_system.repositories.UserRepository;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -73,8 +74,6 @@ public class RegisterActivity extends AppCompatActivity {
                     Snackbar.make(view, R.string.email_already_exists, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
-
-                Object EncryptionHelper = null;
                 User user = new User(LoginHolder, EncryptionHelper.toSHA256String(PasswordHolder),
                         NameHolder, MiddleNameHolder, SurnameHolder, EmailHolder, MobileNumberHolder,
                         dateFormatter.parse(DateOfBirthHolder), QuestionHolder, AnswerHolder);
