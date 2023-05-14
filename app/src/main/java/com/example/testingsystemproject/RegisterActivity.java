@@ -16,6 +16,8 @@ import com.example.testing_system.helpers.EncryptionHelper;
 import com.example.testing_system.models.User;
 import com.example.testing_system.repositories.SecurityQuestionRepository;
 import com.example.testing_system.repositories.UserRepository;
+import com.example.testingsystemproject.repositories.SecurityQuestionRepository;
+import com.example.testingsystemproject.repositories.UserRepository;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -74,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Snackbar.make(view, R.string.email_already_exists, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
+                Object EncryptionHelper;
                 User user = new User(LoginHolder, EncryptionHelper.toSHA256String(PasswordHolder),
                         NameHolder, MiddleNameHolder, SurnameHolder, EmailHolder, MobileNumberHolder,
                         dateFormatter.parse(DateOfBirthHolder), QuestionHolder, AnswerHolder);
