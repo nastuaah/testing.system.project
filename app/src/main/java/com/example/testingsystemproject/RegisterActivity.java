@@ -73,6 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Snackbar.make(view, R.string.email_already_exists, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
+
+                Object EncryptionHelper;
                 User user = new User(LoginHolder, EncryptionHelper.toSHA256String(PasswordHolder),
                         NameHolder, MiddleNameHolder, SurnameHolder, EmailHolder, MobileNumberHolder,
                         dateFormatter.parse(DateOfBirthHolder), QuestionHolder, AnswerHolder);
