@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                Object EncryptionHelper;
+                Object EncryptionHelper = null;
                 User user = new User(LoginHolder, EncryptionHelper.toSHA256String(PasswordHolder),
                         NameHolder, MiddleNameHolder, SurnameHolder, EmailHolder, MobileNumberHolder,
                         dateFormatter.parse(DateOfBirthHolder), QuestionHolder, AnswerHolder);
