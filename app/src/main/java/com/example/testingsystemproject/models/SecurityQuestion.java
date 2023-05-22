@@ -1,6 +1,7 @@
 package com.example.testingsystemproject.models;
 
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -12,5 +13,7 @@ public class SecurityQuestion {
 
     @PrimaryKey(autoGenerate = true)
     public long questionId;
+
+    @ColumnInfo(name = "question")
     public String question;
 }
