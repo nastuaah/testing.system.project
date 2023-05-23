@@ -11,7 +11,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import com.example.testing_system.R;
 import com.example.testingsystemproject.models.Category;
-import com.example.testingsystemproject.question_activities.StartActivity;
 import com.example.testingsystemproject.repositories.CategoryRepository;
 import com.google.android.material.button.MaterialButton;
 import java.util.List;
@@ -46,7 +45,8 @@ public class OptionActivity extends AppCompatActivity {
             else layoutParams.topToBottom = previous.getId();
             btn.setLayoutParams(layoutParams);
             btn.setOnClickListener(v -> {
-                Intent intent = new Intent(this, StartActivity.class);
+                Intent intent = new Intent(this, QuizActivity.class);
+                intent.putExtra("categoryId", category.getCategoryId());
                 startActivity(intent);
                 finish();
             });

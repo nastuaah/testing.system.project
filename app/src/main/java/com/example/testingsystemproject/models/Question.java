@@ -37,5 +37,21 @@ public class Question {
 
     @ColumnInfo(name = "category_id")
     public long category_id;
+
+    public String getOption1() {
+        return opt1;
+    }
+    public String getOption2() {
+        return opt2;
+    }
+    public String getOption3() {
+        return opt3;
+    }
+    public String getQuestion() {
+        return question;
+    }
+    public String getAnswer() {
+        return answer;
+    }
 }
 

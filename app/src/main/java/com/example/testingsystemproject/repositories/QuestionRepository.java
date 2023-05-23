@@ -13,7 +13,7 @@ public class QuestionRepository {
     public QuestionRepository(AppDatabase appDatabase) {
         dao = appDatabase.questionDao();
     }
-    List<Question> getByCategoryId(int categoryId){
+    public List<Question> getByCategoryId(int categoryId){
         return dao.getByCategoryId(categoryId);
     }
 }
