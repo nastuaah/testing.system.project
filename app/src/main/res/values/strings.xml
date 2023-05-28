@@ -8,4 +8,5 @@
     <string name="validation_error">Не верно заполнена форма</string>
     <string name="email_already_exists">Пользователь с такой почтой уже зарегистрирован</string>
     <string name="reg_success">Регистрация прошла успешно</string>
+    <string name="enforce_answer">Пожалуйста, выберите ответ</string>
 </resources>

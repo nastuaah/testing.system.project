@@ -15,9 +15,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.testing_system.R;
+import com.example.testingsystemproject.R;
 import com.example.testingsystemproject.models.Question;
 import com.example.testingsystemproject.repositories.QuestionRepository;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Collections;
 import java.util.List;
@@ -78,8 +80,8 @@ public class QuizActivity extends AppCompatActivity {
 
         textColorDefaultRb = rb1.getTextColors();
         textColorDefaultCd = textViewCountDown.getTextColors();
-
-        questionList = questionRepository.getByCategoryId(savedInstanceState.getInt("categoryId"));
+        int questionCount = 15;
+        questionList = questionRepository.getByCategoryId(savedInstanceState.getInt("categoryId"), questionCount);
         questionCountTotal = questionList.size();
         Collections.shuffle(questionList);
 
@@ -87,14 +89,12 @@ public class QuizActivity extends AppCompatActivity {
 
         buttonConfirmNext.setOnClickListener(v -> {
             if (!answered) {
-                if (rb1.isChecked() || rb2.isChecked() || rb3.isChecked()) {
-                    checkAnswer();
-                } else {
-                    Toast.makeText(QuizActivity.this, "Please select an answer", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                showNextQuestion();
+                if (rb1.isChecked() || rb2.isChecked() || rb3.isChecked()) checkAnswer();
+                else
+                    Snackbar.make(v, R.string.enforce_answer, BaseTransientBottomBar.LENGTH_SHORT).show();
+                return;
             }
+            showNextQuestion();
         });
     }
 
@@ -119,9 +119,9 @@ public class QuizActivity extends AppCompatActivity {
 
             timeLeftInMillis = COUNTDOWN_IN_MILLIS;
             startCountDown();
-        } else {
-            finishQuiz();
+            return;
         }
+        finishQuiz();
     }
 
     private void startCountDown() {

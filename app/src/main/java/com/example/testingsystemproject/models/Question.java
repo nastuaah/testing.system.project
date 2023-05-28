@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
         @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "category_id", onDelete = ForeignKey.SET_NULL)}
 )
 public class Question {
-    public Question(String question, String opt1, String opt2, String opt3, String answer, long category_id) {
+    public Question(String question, String opt1, String opt2, String opt3, int answer, long category_id) {
         this.question= question;
         this.opt1 = opt1;
         this.opt2 = opt2;
@@ -33,7 +33,7 @@ public class Question {
     public String opt3;
 
     @ColumnInfo(name = "answer")
-    public String answer;
+    public int answer;
 
     @ColumnInfo(name = "category_id")
     public long category_id;
@@ -50,8 +50,7 @@ public class Question {
     public String getQuestion() {
         return question;
     }
-    public String getAnswer() {
+    public int getAnswer() {
         return answer;
     }
 }
-

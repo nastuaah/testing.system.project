@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.testing_system'
+    namespace 'com.example.testingsystemproject'
     compileSdk 33
 
     compileOptions {
@@ -12,7 +12,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     defaultConfig {
-        applicationId "com.example.testing_system"
+        applicationId "com.example.testingsystemproject"
         minSdk 33
         targetSdk 33
         versionCode 1
@@ -40,12 +40,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation "com.google.dagger:hilt-android:2.46"
     testImplementation project(path: ':app')
-    testImplementation project(path: ':app')
-    testImplementation project(path: ':app')
-    testImplementation project(path: ':app')
-    testImplementation project(path: ':app')
-    androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'junit:junit:4.13.2'
     annotationProcessor 'com.google.dagger:hilt-compiler:2.46'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "androidx.room:room-runtime:2.6.0-alpha01"
