@@ -32,10 +32,11 @@ public class RegisterActivity extends AppCompatActivity {
     UserRepository repository;
     @Inject
     SecurityQuestionRepository securityQuestionRepository;
-    TextInputLayout Login, Password, Name, Surname, MiddleName, DateOfBirth, Email, MobileNumber, Question, Answer ;
+    TextInputLayout Login, Password, Name, Surname, MiddleName, DateOfBirth, Email, MobileNumber, Question, Answer;
     Button Register;
-    String LoginHolder, PasswordHolder, NameHolder, SurnameHolder, MiddleNameHolder, DateOfBirthHolder, EmailHolder, MobileNumberHolder,  QuestionHolder, AnswerHolder;
+    String LoginHolder, PasswordHolder, NameHolder, SurnameHolder, MiddleNameHolder, DateOfBirthHolder, EmailHolder, MobileNumberHolder, QuestionHolder, AnswerHolder;
     private TextInputEditText DateOfBirthEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
@@ -88,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void MoveToLocalStrings() {
-        LoginHolder = Login.getEditText().getText().toString() ;
+        LoginHolder = Login.getEditText().getText().toString();
         PasswordHolder = Password.getEditText().getText().toString();
         NameHolder = Name.getEditText().getText().toString();
         SurnameHolder = Surname.getEditText().getText().toString();
@@ -100,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
         AnswerHolder = Answer.getEditText().getText().toString();
     }
 
-    public boolean Validate(){
+    public boolean Validate() {
         return !TextUtils.isEmpty(LoginHolder) &&
                 !TextUtils.isEmpty(PasswordHolder) &&
                 !TextUtils.isEmpty(NameHolder) &&
@@ -116,5 +117,14 @@ public class RegisterActivity extends AppCompatActivity {
     public void RedirectToLogin(View view) {
         Intent myIntent = new Intent(this, MainActivity.class);
         startActivity(myIntent);
+    }
+
+    public void RedirectToLoginFinally(View view) {
+        if (!Validate()) {
+            Snackbar.make(view, R.string.validation_error, Snackbar.LENGTH_SHORT).show();
+            Intent myIntent = new Intent(this, MainActivity.class);
+            startActivity(myIntent);
+        }
+
     }
 }

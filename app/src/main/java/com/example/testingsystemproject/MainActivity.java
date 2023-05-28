@@ -52,4 +52,8 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, RegisterActivity.class);
         startActivity(myIntent);
     }
+    public void RedirectToStartActivity(View view) {
+        Intent myIntent = new Intent(this, StartActivity.class);
+        startActivity(myIntent);
+    }
 }

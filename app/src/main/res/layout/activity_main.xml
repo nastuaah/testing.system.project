@@ -135,7 +135,8 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="40dp"
                             android:backgroundTint="#00A4FE"
-                            android:text="LOGIN" />
+                            android:text="LOGIN"
+                            android:onClick="RedirectToStartActivity"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
