@@ -270,7 +270,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Password:"
-                                android:textColor="#182693"
+                                android:textStyle="bold"
+                                android:textColor="#00A5FF"
                                 android:textSize="24sp" />
 
                             <TextView
@@ -306,7 +307,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Nickname"
-                                android:textColor="#182693"
+                                android:textStyle="bold"
+                                android:textColor="#00A5FF"
                                 android:textSize="24sp" />
 
                             <TextView
@@ -342,7 +344,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Last result"
-                                android:textColor="#182693"
+                                android:textColor="#00A5FF"
+                                android:textStyle="bold"
                                 android:textSize="24sp" />
 
                             <TextView
@@ -378,7 +381,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Test"
-                                android:textColor="#182693"
+                                android:textColor="#00A5FF"
+                                android:textStyle="bold"
                                 android:textSize="24sp" />
 
                             <TextView
