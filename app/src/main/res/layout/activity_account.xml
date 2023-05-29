@@ -266,10 +266,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Password:"
-                                android:textStyle="bold"
+                                android:text="Password"
                                 android:textColor="#00A5FF"
-                                android:textSize="24sp" />
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/textView5"
@@ -405,6 +405,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/background_button"
+                android:shadowColor="@color/colorAccent"
                 android:text="back to start activity"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
