@@ -16,4 +16,10 @@ public class QuestionRepository {
     public List<Question> getByCategoryId(int categoryId, int n){
         return dao.getByCategoryId(categoryId, n);
     }
+    String getOption1(int questionId){
+        return dao.getOption1(questionId);
+    }
+    String getOption2(int questionId){
+        return dao.getOption2(questionId);
+    }
 }

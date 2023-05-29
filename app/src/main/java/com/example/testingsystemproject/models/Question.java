@@ -3,6 +3,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.Query;
 
 @Entity(foreignKeys = {
         @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "category_id", onDelete = ForeignKey.SET_NULL)}

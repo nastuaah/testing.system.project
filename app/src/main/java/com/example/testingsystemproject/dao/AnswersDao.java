@@ -13,8 +13,22 @@ public interface AnswersDao {
     @Insert
     void insert(Answers... answers);
 
-    @Query("SELECT * from question WHERE category_id = :categoryId ORDER BY questionId LIMIT :n")
-    List<Question> getByCategoryId(int categoryId, int n);
+    @Query("SELECT * FROM answers WHERE question_id = :question_id")
+    List<Answers> getByQuestionId(int question_id);
 
-    List<Question> getByCategoryId(int categoryId);
+    @Query("SELECT * FROM answers WHERE rightAnswer = :rightAnswer")
+    String getRightAnswer(boolean rightAnswer);
+
+    @Query("SELECT * FROM answers" +
+            " INNER JOIN usersanswers ON usersanswers.answer_id = answerId" +
+            " INNER JOIN user ON user.userId = usersanswers.user_id" +
+            " WHERE userName LIKE :userName")
+    List<Answers> getUserAnswersByUserName(String userName);
+
+    @Query("SELECT * FROM answers" +
+            " INNER JOIN usersanswers ON usersanswers.answer_id = answerId" +
+            " INNER JOIN user ON user.userId = usersanswers.user_id" +
+            " WHERE userName LIKE :userName AND rightAnswer = :rightAnswer" )
+    List<Answers> getUserRightAnswersAnswersByUserName(String userName, boolean rightAnswer);
+    // Не понятно с WHERE что делать.... Правильно ли???
 }
