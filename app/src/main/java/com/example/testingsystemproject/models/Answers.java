@@ -18,12 +18,12 @@ public class Answers {
     @PrimaryKey(autoGenerate = true)
     public long answerId;
 
-    @ColumnInfo(name = answer)
+    @ColumnInfo(name = "answer")
     public String answer;
 
-    @ColumnInfo(name = rightAnswer)
+    @ColumnInfo(name = "rightAnswer")
     public String rightAnswer;
 
-    @ColumnInfo(name = question_id)
+    @ColumnInfo(name = "question_id")
     public long question_id;
 }

@@ -14,9 +14,9 @@ public class UsersAnswers {
         this.answer_id = answer_id;
         this.user_id = user_id;
     }
-    @ColumnInfo(name = answer_id)
+    @ColumnInfo(name = "answer_id")
     public long answer_id;
 
-    @ColumnInfo(name = user_id)
+    @ColumnInfo(name = "user_id")
     public long user_id;
 }

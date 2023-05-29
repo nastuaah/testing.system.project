@@ -69,7 +69,7 @@ public class DatabaseModule {
                 while ((mLine = reader.readLine()) != null) {
                     String[] parts = mLine.substring(0, mLine.length() - 1).split("\\(");
                     String[] answers = parts[1].split(",");
-                    db.questionDao().insert(new Question(parts[0], answers[0], answers[1], answers[2], -1, Integer.parseInt(fileName.split("\\.")[0])));
+                    //db.questionDao().insert(new Question(parts[0], answers[0], answers[1], answers[2], -1, Integer.parseInt(fileName.split("\\.")[0])));
                 }
             }
         }

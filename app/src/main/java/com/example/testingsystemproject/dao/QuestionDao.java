@@ -15,4 +15,6 @@ public interface QuestionDao {
     void insert(Question... questions);
     @Query("SELECT * from question WHERE category_id = :categoryId ORDER BY questionId LIMIT :n")
     List<Question> getByCategoryId(int categoryId, int n);
+
+    List<Question> getByCategoryId(int categoryId);
 }
