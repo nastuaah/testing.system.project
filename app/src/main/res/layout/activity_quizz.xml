@@ -33,7 +33,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="90dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp">
 
@@ -51,7 +51,8 @@
                 style="@style/linearParent"
                 android:layout_height="508dp"
                 android:layout_gravity="center"
-                android:padding="@dimen/loginViewsMargin">
+                android:padding="@dimen/loginViewsMargin"
+                android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputEmail"
