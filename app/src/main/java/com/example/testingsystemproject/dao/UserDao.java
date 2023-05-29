@@ -25,4 +25,5 @@ public interface UserDao {
 
     @Query("SELECT CAST(CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS BIT) FROM user WHERE email = :email;")
     boolean checkIfUserWithEmailExists(String email);
+
 }

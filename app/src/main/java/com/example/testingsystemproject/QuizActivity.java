@@ -13,24 +13,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.testingsystemproject.R;
-import com.example.testingsystemproject.models.Question;
+import com.example.testing_system.R;
 import com.example.testingsystemproject.repositories.QuestionRepository;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import javax.inject.Inject;
-
-import dagger.hilt.android.AndroidEntryPoint;
-
-@AndroidEntryPoint
-public class QuizActivity extends AppCompatActivity {
+public class QuizActivity extends Activity {
     public static final String EXTRA_SCORE = "extraScore";
     private static final long COUNTDOWN_IN_MILLIS = 30000;
 
@@ -60,9 +50,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private long backPressedTime;
 
-    @Inject
-    public QuestionRepository questionRepository;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,21 +67,26 @@ public class QuizActivity extends AppCompatActivity {
 
         textColorDefaultRb = rb1.getTextColors();
         textColorDefaultCd = textViewCountDown.getTextColors();
-        int questionCount = 15;
-        questionList = questionRepository.getByCategoryId(savedInstanceState.getInt("categoryId"), questionCount);
+
+        questionList = QuestionRepository.getAll();
         questionCountTotal = questionList.size();
         Collections.shuffle(questionList);
 
         showNextQuestion();
 
-        buttonConfirmNext.setOnClickListener(v -> {
-            if (!answered) {
-                if (rb1.isChecked() || rb2.isChecked() || rb3.isChecked()) checkAnswer();
-                else
-                    Snackbar.make(v, R.string.enforce_answer, BaseTransientBottomBar.LENGTH_SHORT).show();
-                return;
+        buttonConfirmNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!answered) {
+                    if (rb1.isChecked() || rb2.isChecked() || rb3.isChecked()) {
+                        checkAnswer();
+                    } else {
+                        Toast.makeText(QuizActivity.this, "Please select an answer", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    showNextQuestion();
+                }
             }
-            showNextQuestion();
         });
     }
 
@@ -119,9 +111,9 @@ public class QuizActivity extends AppCompatActivity {
 
             timeLeftInMillis = COUNTDOWN_IN_MILLIS;
             startCountDown();
-            return;
+        } else {
+            finishQuiz();
         }
-        finishQuiz();
     }
 
     private void startCountDown() {
