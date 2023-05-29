@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey;
 )
 
 public class Answers {
-    public Answers(String answer, String rightAnswer, long question_id){
+    public Answers(String answer, Boolean rightAnswer, long question_id){
         this.answer = answer;
         this.rightAnswer = rightAnswer;
         this.question_id = question_id;
@@ -22,7 +22,7 @@ public class Answers {
     public String answer;
 
     @ColumnInfo(name = "rightAnswer")
-    public String rightAnswer;
+    public Boolean rightAnswer;
 
     @ColumnInfo(name = "question_id")
     public long question_id;
