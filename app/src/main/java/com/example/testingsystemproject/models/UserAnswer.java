@@ -5,12 +5,12 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
 @Entity(foreignKeys = {
-        @ForeignKey(entity = Answers.class, parentColumns = "answerId", childColumns = "answer_id", onDelete = ForeignKey.SET_NULL),
+        @ForeignKey(entity = Answer.class, parentColumns = "answerId", childColumns = "answer_id", onDelete = ForeignKey.SET_NULL),
         @ForeignKey(entity = User.class, parentColumns = "userId", childColumns = "user_id", onDelete = ForeignKey.SET_NULL)}
 )
 
-public class UsersAnswers {
-    public UsersAnswers(long answer_id, long user_id){
+public class UserAnswer {
+    public UserAnswer(long answer_id, long user_id){
         this.answer_id = answer_id;
         this.user_id = user_id;
     }

@@ -2,6 +2,7 @@ package com.example.testingsystemproject.repositories;
 import com.example.testingsystemproject.dao.QuestionDao;
 import com.example.testingsystemproject.database.AppDatabase;
 import com.example.testingsystemproject.models.Question;
+import com.example.testingsystemproject.models.QuestionWithAnswer;
 
 import java.util.List;
 
@@ -16,10 +17,8 @@ public class QuestionRepository {
     public List<Question> getByCategoryId(int categoryId, int n){
         return dao.getByCategoryId(categoryId, n);
     }
-    String getOption1(int questionId){
-        return dao.getOption1(questionId);
-    }
-    String getOption2(int questionId){
-        return dao.getOption2(questionId);
+
+    public List<QuestionWithAnswer> getQuestion(){
+        return dao.getQuestion();
     }
 }
