@@ -1,5 +1,6 @@
 package com.example.testingsystemproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,6 @@ public class AccountActivity extends AppCompatActivity {
     private TextView textViewUsersPassword;
     private TextView textViewUsersNickname;
     private TextView textViewUsersResult;
-
     private TextView textViewUsersLogin;
     private TextView textViewUsersEmail;
 
@@ -40,6 +40,7 @@ public class AccountActivity extends AppCompatActivity {
 
     @Inject
     public UserRepository userRepository;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +49,8 @@ public class AccountActivity extends AppCompatActivity {
         textViewUsersPassword = findViewById(R.id.UsersPassword);
         textViewUsersNickname = findViewById(R.id.UsersNamebd);
         textViewUsersResult = findViewById(R.id.LastScore);
-        textViewUsersLogin = findViewById(R.id.textView3);
-        textViewUsersEmail = findViewById(R.id.textView4);
+        textViewUsersLogin = findViewById(R.id.UsersLogin);
+        textViewUsersEmail = findViewById(R.id.UsersEmail);
         //добавить кнопки с логином и последним результатом textViewUsersNickname, textViewUsersResult+
         // id from activity_account
         //textViewUsersLogin, textViewUsersEmail+
