@@ -124,6 +124,7 @@
 
                                     <ImageView
                                         android:id="@+id/RedirecttoResults"
+                                        android:onClick="RedirectToTestResults"
                                         android:layout_width="69dp"
                                         android:layout_height="80dp"
                                         app:layout_constraintBottom_toBottomOf="parent"
@@ -169,6 +170,7 @@
 
                                     <ImageView
                                         android:id="@+id/RedirecttoInfo"
+                                        android:onClick="RedirectToUserInfo"
                                         android:layout_width="69dp"
                                         android:layout_height="80dp"
                                         app:layout_constraintBottom_toBottomOf="parent"
@@ -380,7 +382,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/BtnBacktoStartActivity"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -389,7 +391,8 @@
                 android:text="Back to start activity"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="RedirectToStartActivity1"/>
         </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

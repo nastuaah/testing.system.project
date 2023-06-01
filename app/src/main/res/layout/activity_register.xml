@@ -208,9 +208,9 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/idEditSecurityQuestion"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+                    android:layout_height="wrap_content">
 
                     <AutoCompleteTextView
                         android:layout_width="match_parent"
@@ -246,8 +246,8 @@
                     android:backgroundTint="#00A4FE"
                     android:bottomLeftRadius="10dp"
                     android:bottomRightRadius="10dp"
-                    android:text="Register"
                     android:onClick="RedirectToLoginFinally"
+                    android:text="Register"
                     android:textColor="@color/white"
                     android:topLeftRadius="10dp"
                     android:topRightRadius="10dp" />

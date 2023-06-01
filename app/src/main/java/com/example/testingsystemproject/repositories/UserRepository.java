@@ -1,11 +1,14 @@
 package com.example.testingsystemproject.repositories;
 
+import com.example.testingsystemproject.models.Question;
 import com.example.testingsystemproject.models.User;
 
 import com.example.testingsystemproject.dao.UserDao;
 import com.example.testingsystemproject.database.AppDatabase;
 import com.example.testingsystemproject.helpers.EncryptionHelper;
 import com.example.testingsystemproject.models.User;
+
+import java.util.List;
 import java.util.Objects;
 import javax.inject.Singleton;
 
@@ -27,5 +30,9 @@ public class UserRepository {
     public boolean authenticate(String userName, String password) {
         String passwordHashFromDatabase = userDao.getPasswordByUserName(userName);
         return Objects.equals(passwordHashFromDatabase, EncryptionHelper.toSHA256String(password));
+    }
+
+    public List<User> getById(int userId) {
+        return (List<User>) userDao.getById(userId);
     }
 }
