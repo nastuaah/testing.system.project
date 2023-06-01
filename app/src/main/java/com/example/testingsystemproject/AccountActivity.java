@@ -21,11 +21,21 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class AccountActivity extends AppCompatActivity {
 
     private TextView textViewUsersPassword;
+    private TextView textViewUsersNamebd;
+    private TextView textViewUsersResult;
+
+    private TextView textViewUsersLogin;
+    private TextView textViewUsersEmail;
+
     //добавить переменные textViewUsersNickname, textViewUsersResult
     //textViewUsersLogin, textViewUsersEmail
     private List<User> userList;
     private User currentPassword;
-    // currentNickname, currentResult
+    private User currentNickname;
+    private User currentResult;
+    private User currentLogin;
+    private User currentEmail;
+
     //currentLogin, currentEmail
 
     @Inject
@@ -36,6 +46,10 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         textViewUsersPassword = findViewById(R.id.UsersPassword);
+        textViewUsersNamebd = findViewById(R.id.UsersNamebd);
+        textViewUsersResult = findViewById(R.id.LastScore);
+        textViewUsersLogin = findViewById(R.id.textView3);
+        textViewUsersEmail = findViewById(R.id.textView4);
         //добавить кнопки с логином и последним результатом textViewUsersNickname, textViewUsersResult
         // id from activity_account
         //textViewUsersLogin, textViewUsersEmail
