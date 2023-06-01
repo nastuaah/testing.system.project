@@ -21,12 +21,22 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class AccountActivity extends AppCompatActivity {
 
     private TextView textViewUsersPassword;
-    //добавить переменные textViewUsersNickname, textViewUsersResult
-    //textViewUsersLogin, textViewUsersEmail
+    private TextView textViewUsersNickname;
+    private TextView textViewUsersResult;
+
+    private TextView textViewUsersLogin;
+    private TextView textViewUsersEmail;
+
+    //добавить переменные textViewUsersNickname, textViewUsersResult+
+    //textViewUsersLogin, textViewUsersEmail+
     private List<User> userList;
     private User currentPassword;
-    // currentNickname, currentResult
-    //currentLogin, currentEmail
+    private User currentNickname;
+    private User currentResult;
+    private User currentLogin;
+    private User currentEmail;
+
+    //currentLogin, currentEmail+
 
     @Inject
     public UserRepository userRepository;
@@ -36,9 +46,13 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         textViewUsersPassword = findViewById(R.id.UsersPassword);
-        //добавить кнопки с логином и последним результатом textViewUsersNickname, textViewUsersResult
+        textViewUsersNickname = findViewById(R.id.UsersNamebd);
+        textViewUsersResult = findViewById(R.id.LastScore);
+        textViewUsersLogin = findViewById(R.id.textView3);
+        textViewUsersEmail = findViewById(R.id.textView4);
+        //добавить кнопки с логином и последним результатом textViewUsersNickname, textViewUsersResult+
         // id from activity_account
-        //textViewUsersLogin, textViewUsersEmail
+        //textViewUsersLogin, textViewUsersEmail+
         userList = userRepository.getById(savedInstanceState.getInt("userId"));
         Collections.shuffle(userList);
 
@@ -51,9 +65,20 @@ public class AccountActivity extends AppCompatActivity {
 
         //getLogin, getEmail
         }
-
-    //Метод showUsersNickname, showLastResult, showUsersLogin, showUsersEmail
     //добавить Redirect в UsersInfo, TestResults
+    private void showUsersNickname(){
+
+    }
+    private void showLastResult(){
+
+    }
+    private void showUsersLogin(){
+
+    }
+
+    private void showUsersEmail(){
+
+    }
 
     public void RedirectToStartActivity1(View view) {
         Intent myIntent = new Intent(this, StartActivity.class);
