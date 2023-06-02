@@ -360,12 +360,12 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/design_default_color_primary_variant"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:onClick="RedirectToStartActivity1"
                 android:text="Back to start activity"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:onClick="RedirectToStartActivity1"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
