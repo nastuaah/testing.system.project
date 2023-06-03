@@ -65,14 +65,16 @@
                             android:textColor="#ffffff"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            tools:layout_editor_absoluteY="183dp" />
+                            app:layout_constraintEnd_toEndOf="@+id/UsersLogin"
+                            app:layout_constraintStart_toStartOf="@+id/UsersLogin"
+                            app:layout_constraintTop_toBottomOf="@+id/UsersLogin" />
 
                         <TextView
                             android:id="@+id/textView5"
                             android:layout_width="205dp"
                             android:layout_height="58dp"
                             android:gravity="center"
-                            android:text="Welcome !"
+                            android:text="Welcome!"
                             android:textColor="@color/white"
                             android:textSize="40dp"
                             android:textStyle="bold"
@@ -358,12 +360,12 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/design_default_color_primary_variant"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:onClick="RedirectToStartActivity1"
                 android:text="Back to start activity"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:onClick="RedirectToStartActivity1"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
