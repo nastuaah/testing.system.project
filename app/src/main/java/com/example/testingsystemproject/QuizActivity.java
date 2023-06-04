@@ -1,12 +1,11 @@
 package com.example.testingsystemproject;
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -52,8 +51,12 @@ public class QuizActivity extends AppCompatActivity {
 
     private List<Question> questionList;
     private int questionCounter;
+
+    private int addquestionCounter;
     private int questionCountTotal;
     private Question currentQuestion;
+
+    private Question additionalQuestion;
 
     private int score;
     private boolean answered;
@@ -196,6 +199,23 @@ public class QuizActivity extends AppCompatActivity {
             buttonConfirmNext.setText("Next");
         } else {
             buttonConfirmNext.setText("Finish");
+        }
+    }
+
+    private void addQuestion(){
+
+        RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
+        int answerNr = rbGroup.indexOfChild(rbSelected) + 1;
+
+        if (timeLeftInMillis > 20000 || answerNr != currentQuestion.getAnswer()) {
+            addquestionCounter=+1;
+            additionalQuestion = questionList.get(addquestionCounter);
+
+            //textViewQuestion.setText(additionalQuestion.getAdditionalQuestion());
+            rb1.setText(additionalQuestion.getOption1());
+            rb2.setText(additionalQuestion.getOption2());
+            rb3.setText(additionalQuestion.getOption3());
+
         }
     }
 

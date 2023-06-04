@@ -21,5 +21,7 @@
         <activity android:name=".OptionActivity" />
         <activity android:name=".QuizActivity" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".AccountActivity" />
+        <activity android:name=".StartActivity" />
     </application>
 </manifest>

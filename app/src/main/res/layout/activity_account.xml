@@ -46,36 +46,35 @@
                         app:layout_constraintVertical_bias="0.0">
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/UsersLogin"
                             android:layout_width="105dp"
                             android:layout_height="26dp"
                             android:text="Name User"
                             android:textColor="#ffffff"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@+id/textView4"
                             app:layout_constraintEnd_toEndOf="@+id/textView5"
                             app:layout_constraintStart_toStartOf="@+id/textView5"
                             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
                         <TextView
-                            android:id="@+id/textView4"
+                            android:id="@+id/UsersEmail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="e-mail"
                             android:textColor="#ffffff"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@+id/textView3"
-                            app:layout_constraintStart_toStartOf="@+id/textView3"
-                            tools:layout_editor_absoluteY="183dp" />
+                            app:layout_constraintEnd_toEndOf="@+id/UsersLogin"
+                            app:layout_constraintStart_toStartOf="@+id/UsersLogin"
+                            app:layout_constraintTop_toBottomOf="@+id/UsersLogin" />
 
                         <TextView
                             android:id="@+id/textView5"
                             android:layout_width="205dp"
                             android:layout_height="58dp"
                             android:gravity="center"
-                            android:text="Welcome !"
+                            android:text="Welcome!"
                             android:textColor="@color/white"
                             android:textSize="40dp"
                             android:textStyle="bold"
@@ -124,6 +123,7 @@
 
                                     <ImageView
                                         android:id="@+id/RedirecttoResults"
+                                        android:onClick="RedirectToTestResults"
                                         android:layout_width="69dp"
                                         android:layout_height="80dp"
                                         app:layout_constraintBottom_toBottomOf="parent"
@@ -169,6 +169,7 @@
 
                                     <ImageView
                                         android:id="@+id/RedirecttoInfo"
+                                        android:onClick="RedirectToUserInfo"
                                         android:layout_width="69dp"
                                         android:layout_height="80dp"
                                         app:layout_constraintBottom_toBottomOf="parent"
@@ -269,7 +270,7 @@
                         <View
                             android:id="@+id/view"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_height="26dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="6dp"
@@ -305,7 +306,7 @@
                         <View
                             android:id="@+id/view3"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_height="28dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="6dp"
@@ -321,7 +322,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Last result:"
+                                android:text="Result:"
                                 android:textColor="#00A5FF"
                                 android:textSize="24sp"
                                 android:textStyle="bold" />
@@ -347,32 +348,6 @@
                             android:layout_marginBottom="6dp"
                             android:background="#D9D9D9" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_margin="10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Test:"
-                                android:textColor="#00A5FF"
-                                android:textSize="24sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/TestScore"
-                                android:layout_width="153dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="97%"
-                                android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
-                                android:textSize="18sp" />
-
-                        </LinearLayout>
 
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -380,12 +355,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/BtnBacktoStartActivity"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/design_default_color_primary_variant"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:onClick="RedirectToStartActivity1"
                 android:text="Back to start activity"
                 android:textColor="@color/white"
                 android:textSize="18sp"
