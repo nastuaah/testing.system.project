@@ -3,6 +3,7 @@ package com.example.testingsystemproject.models;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(entity = Answer.class, parentColumns = "answerId", childColumns = "answer_id", onDelete = ForeignKey.SET_NULL),
@@ -14,6 +15,10 @@ public class UserAnswer {
         this.answer_id = answer_id;
         this.user_id = user_id;
     }
+
+    @PrimaryKey(autoGenerate = true)
+    public long userAnswerId;
+
     @ColumnInfo(name = "answer_id")
     public long answer_id;
 
