@@ -16,16 +16,8 @@ public interface QuestionDao {
     @Insert
     void insert(Question... questions);
 
-    @Query("SELECT * FROM  question WHERE category_id = :categoryId ORDER BY questionId LIMIT :n")
-    List<Question> getByCategoryId(int categoryId, int n);
-
     @Transaction
-    @Query("SELECT * FROM question WHERE questionId = :questionId")
-    public QuestionWithAnswer getQuestion(long questionId);
+    @Query("SELECT * FROM question WHERE categoryId = :categoryId ORDER BY questionId LIMIT :n")
+    public QuestionWithAnswer getQuestion(long categoryId, int n);
 
-    @Transaction
-    @Query("SELECT * FROM question" +
-            " INNER JOIN answer" +
-            " WHERE questionId = answer.question_id AND answerId = :answerId")
-    public QuestionWithAnswer getOption(long answerId);
 }

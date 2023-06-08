@@ -10,12 +10,15 @@ import androidx.room.Relation;
 import java.util.List;
 
 @Entity(foreignKeys = {
-        @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "category_id", onDelete = ForeignKey.SET_NULL)}
+        @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "categoryId", onDelete = ForeignKey.SET_NULL),
+        @ForeignKey(entity = Answer.class, parentColumns = "answerId", childColumns = "rightAnswer", onDelete = ForeignKey.SET_NULL)
+}
 )
 public class Question {
-    public Question(String question,  long category_id) {
+    public Question(String question,  long categoryId, long rightAnswer) {
         this.question= question;
-        this.category_id = category_id;
+        this.categoryId = categoryId;
+        this.rightAnswer = rightAnswer;
     }
 
     @PrimaryKey(autoGenerate = true)
@@ -24,10 +27,13 @@ public class Question {
     @ColumnInfo(name = "question")
     public String question;
 
-    @ColumnInfo(name = "category_id")
-    public long category_id;
+    @ColumnInfo(name = "categoryId")
+    public long categoryId;
 
     @Relation(parentColumn = "questionId", entityColumn = "question_id", entity = Answer.class)
     public List<Answer> answers;
+
+    @ColumnInfo(name = "rightAnswer")
+    public long rightAnswer;
 
     }

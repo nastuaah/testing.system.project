@@ -13,12 +13,13 @@ import com.example.testingsystemproject.dao.UserDao;
 import com.example.testingsystemproject.models.Answer;
 import com.example.testingsystemproject.models.Category;
 import com.example.testingsystemproject.models.Question;
-import com.example.testingsystemproject.models.QuestionWithAnswer;
 import com.example.testingsystemproject.models.SecurityQuestion;
+import com.example.testingsystemproject.models.Test;
+import com.example.testingsystemproject.models.TestQuestion;
 import com.example.testingsystemproject.models.User;
 import com.example.testingsystemproject.models.UserAnswer;
 
-@Database(entities = { User.class, SecurityQuestion.class, Question.class, Category.class, Answer.class, UserAnswer.class }, version = 1)
+@Database(entities = { User.class, SecurityQuestion.class, Question.class, Category.class, Answer.class, UserAnswer.class, Test.class, TestQuestion.class}, version = 1)
 @TypeConverters({ DateConverter.class })
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
