@@ -11,9 +11,10 @@ import androidx.room.PrimaryKey;
 )
 
 public class UserAnswer {
-    public UserAnswer(long answer_id, long user_id){
+    public UserAnswer(long answer_id, long user_id, boolean rightAnswer){
         this.answer_id = answer_id;
         this.user_id = user_id;
+        this.rightAnswer = rightAnswer;
     }
 
     @PrimaryKey(autoGenerate = true)
@@ -24,4 +25,7 @@ public class UserAnswer {
 
     @ColumnInfo(name = "user_id")
     public long user_id;
+
+    @ColumnInfo(name = "rightAnswer")
+    public boolean rightAnswer;
 }
