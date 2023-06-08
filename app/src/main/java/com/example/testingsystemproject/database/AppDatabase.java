@@ -8,6 +8,8 @@ import com.example.testingsystemproject.dao.AnswerDao;
 import com.example.testingsystemproject.dao.CategoryDao;
 import com.example.testingsystemproject.dao.QuestionDao;
 import com.example.testingsystemproject.dao.SecurityQuestionDao;
+import com.example.testingsystemproject.dao.TestDao;
+import com.example.testingsystemproject.dao.TestQuestionDao;
 import com.example.testingsystemproject.dao.UserAnswerDao;
 import com.example.testingsystemproject.dao.UserDao;
 import com.example.testingsystemproject.models.Answer;
@@ -28,4 +30,10 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract CategoryDao categoryDao();
     public abstract AnswerDao answerDao();
     public abstract UserAnswerDao userAnswerDao();
+
+    public TestQuestionDao testQuestionDao() {
+    }
+
+    public TestDao testDao() {
+    }
 }
