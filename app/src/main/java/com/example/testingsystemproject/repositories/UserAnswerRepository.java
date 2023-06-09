@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 @Singleton
 public class UserAnswerRepository {
-        private final UserAnswerDao dao;
-        public UserAnswerRepository(AppDatabase appDatabase) {dao = appDatabase.userAnswerDao();}
+        private final UserAnswerDao userAnswerDao;
+        public UserAnswerRepository(AppDatabase appDatabase) {userAnswerDao = appDatabase.userAnswerDao();}
+        public int updateByUserId(int n, int userId){return userAnswerDao.updateByUserId(n,userId);}
 }
