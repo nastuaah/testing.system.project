@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         if (authenticated) {
             MyApplication app = (MyApplication) this.getApplication();
             app.authenticated = true;
-            //TODO: redirect to account
         }
         EmptyEditTextAfterDataInsert();
     }
