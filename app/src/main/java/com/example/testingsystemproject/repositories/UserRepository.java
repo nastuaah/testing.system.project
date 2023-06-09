@@ -1,5 +1,7 @@
 package com.example.testingsystemproject.repositories;
 
+import androidx.room.Query;
+
 import com.example.testingsystemproject.models.Question;
 import com.example.testingsystemproject.models.User;
 
@@ -35,4 +37,6 @@ public class UserRepository {
     public List<User> getById(int userId) {
         return (List<User>) userDao.getById(userId);
     }
+
+    public int deleteByUserId(int userId){ return userDao.deleteByUserId(userId); }
 }

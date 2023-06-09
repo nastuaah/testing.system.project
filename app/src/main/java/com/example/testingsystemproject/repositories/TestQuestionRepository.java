@@ -8,9 +8,10 @@ import javax.inject.Singleton;
 
 @Singleton
 public class TestQuestionRepository {
-    private final TestQuestionDao dao;
+    private final TestQuestionDao testQuestionDao;
 
     public TestQuestionRepository(AppDatabase appDatabase) {
-        dao = appDatabase.testQuestionDao();
+        testQuestionDao = appDatabase.testQuestionDao();
     }
+    public void insert(TestQuestion... testQuestions){testQuestionDao.insert(testQuestions);}
 }
