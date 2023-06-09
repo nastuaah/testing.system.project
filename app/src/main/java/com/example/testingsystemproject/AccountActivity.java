@@ -27,8 +27,6 @@ public class AccountActivity extends AppCompatActivity {
     private TextView textViewUsersLogin;
     private TextView textViewUsersEmail;
 
-    //добавить переменные textViewUsersNickname, textViewUsersResult+
-    //textViewUsersLogin, textViewUsersEmail+
     private List<User> userList;
     private User currentPassword;
     private User currentNickname;
@@ -36,7 +34,6 @@ public class AccountActivity extends AppCompatActivity {
     private User currentLogin;
     private User currentEmail;
 
-    //currentLogin, currentEmail+
 
     @Inject
     public UserRepository userRepository;
@@ -51,9 +48,7 @@ public class AccountActivity extends AppCompatActivity {
         textViewUsersResult = findViewById(R.id.LastScore);
         textViewUsersLogin = findViewById(R.id.UsersLogin);
         textViewUsersEmail = findViewById(R.id.UsersEmail);
-        //добавить кнопки с логином и последним результатом textViewUsersNickname, textViewUsersResult+
         // id from activity_account
-        //textViewUsersLogin, textViewUsersEmail+
         userList = userRepository.getById(savedInstanceState.getInt("userId"));
         Collections.shuffle(userList);
 

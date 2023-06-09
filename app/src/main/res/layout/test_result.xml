@@ -92,8 +92,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/TestResultForAllCategories"
-            android:layout_width="match_parent"
-            android:layout_height="566dp">
+            android:layout_width="369dp"
+            android:layout_height="match_parent">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
