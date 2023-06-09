@@ -28,7 +28,4 @@ public class Question {
     @ColumnInfo(name = "rightAnswer")
     public long rightAnswer;
 
-    public long getRightAnswer(){
-        return rightAnswer;
-    }
 }
