@@ -5,10 +5,8 @@ import androidx.room.Insert;
 
 import com.example.testingsystemproject.models.TestQuestion;
 
-import java.util.List;
-
 @Dao
 public interface TestQuestionDao {
     @Insert
-    void insert(List<TestQuestion> testQuestions);
+    void insert(TestQuestion... testQuestions);
 }

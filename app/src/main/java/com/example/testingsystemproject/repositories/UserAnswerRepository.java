@@ -9,6 +9,4 @@ import javax.inject.Singleton;
 public class UserAnswerRepository {
         private final UserAnswerDao dao;
         public UserAnswerRepository(AppDatabase appDatabase) {dao = appDatabase.userAnswerDao();}
-
 }
-

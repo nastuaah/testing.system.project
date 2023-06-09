@@ -4,7 +4,6 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.example.testingsystemproject.dao.AnswerDao;
 import com.example.testingsystemproject.dao.CategoryDao;
 import com.example.testingsystemproject.dao.QuestionDao;
 import com.example.testingsystemproject.dao.SecurityQuestionDao;
@@ -25,17 +24,10 @@ import com.example.testingsystemproject.models.UserAnswer;
 @TypeConverters({ DateConverter.class })
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
-
     public abstract QuestionDao questionDao();
-
     public abstract SecurityQuestionDao securityQuestionDao();
-
     public abstract CategoryDao categoryDao();
-
-    public abstract AnswerDao answerDao();
-
     public abstract UserAnswerDao userAnswerDao();
     public abstract TestDao testDao();
     public abstract TestQuestionDao testQuestionDao();
 }
-

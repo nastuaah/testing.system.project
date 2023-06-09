@@ -8,15 +8,11 @@ import androidx.room.PrimaryKey;
 @Entity(foreignKeys = {
         @ForeignKey(entity = Question.class, parentColumns = "questionId", childColumns = "question_id", onDelete = ForeignKey.SET_NULL),
         @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "categoryId", onDelete = ForeignKey.SET_NULL)
-
-}
-)
-
+})
 public class Answer {
-    public Answer(String answer, Boolean rightAnswer, long question_id, long categoryId){
+    public Answer(String answer, long questionId, long categoryId){
         this.answer = answer;
-        this.rightAnswer = rightAnswer;
-        this.question_id = question_id;
+        this.questionId = questionId;
         this.categoryId = categoryId;
     }
 
@@ -26,11 +22,8 @@ public class Answer {
     @ColumnInfo(name = "answer")
     public String answer;
 
-    @ColumnInfo(name = "rightAnswer")
-    public Boolean rightAnswer;
-
     @ColumnInfo(name = "question_id")
-    public long question_id;
+    public long questionId;
 
     @ColumnInfo(name = "categoryId")
     public long categoryId;
