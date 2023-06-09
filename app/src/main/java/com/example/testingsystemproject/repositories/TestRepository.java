@@ -10,7 +10,7 @@ import javax.inject.Singleton;
 public class TestRepository {
     private final TestDao testDao;
 
-    public TestRepository(AppDatabase appDatabase, TestDao testDao) {
+    public TestRepository(AppDatabase appDatabase) {
         this.testDao = appDatabase.testDao();
     }
     public void insert(Test... tests){testDao.insert(tests);}
