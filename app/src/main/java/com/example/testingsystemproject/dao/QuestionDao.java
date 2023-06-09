@@ -16,4 +16,7 @@ public interface QuestionDao {
 
     @Query("SELECT * FROM question WHERE categoryId = :categoryId ORDER BY questionId LIMIT :n")
     List<QuestionWithAnswer> getByCategoryId(long categoryId, int n);
+
+    @Query("SELECT * FROM question WHERE categoryId = :categoryId AND questionId != :questionId ORDER BY questionId LIMIT :n")
+    List<QuestionWithAnswer> getNewQuestionByCategoryId(long categoryId, int n, int questionId);
 }
