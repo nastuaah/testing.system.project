@@ -29,13 +29,14 @@ public class AccountActivity extends AppCompatActivity {
 
     private List<User> userList;
 
-    private int userId;
     private User currentPassword;
     private User currentName;
 
     private User currentResult;
     private User currentLogin;
     private User currentEmail;
+
+    private User currentId;
 
 
     @Inject
@@ -75,11 +76,11 @@ public class AccountActivity extends AppCompatActivity {
         textViewUsersEmail.setText(currentEmail.email);
     }
     public void DeleteAccount (View view){
-       userRepository.deleteByUserId(userId);
+       userRepository.deleteByUserId(currentId.userId);
     }
     public void RedirectToStartActivity1(View view) {
         Intent myIntent = new Intent(this, StartActivity.class);
         startActivity(myIntent);
     }
-    
+
 }
