@@ -17,7 +17,7 @@ public class QuestionRepository {
     public List<QuestionWithAnswer> getByCategoryId(int categoryId, int n){
         return dao.getByCategoryId(categoryId, n);
     }
-    public List<QuestionWithAnswer> getNewQuestionByCategoryId(int categoryId, int n, int questionId){
-        return dao.getNewQuestionByCategoryId(categoryId, n, questionId);
+    public List<QuestionWithAnswer> getNewQuestionByCategoryId(int categoryId, int n, List<Integer> questionIdList){
+        return dao.getNewQuestionByCategoryId(categoryId, n, questionIdList);
     }
 }

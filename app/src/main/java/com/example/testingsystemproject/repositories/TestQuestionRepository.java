@@ -4,6 +4,8 @@ import com.example.testingsystemproject.dao.TestQuestionDao;
 import com.example.testingsystemproject.database.AppDatabase;
 import com.example.testingsystemproject.models.TestQuestion;
 
+import java.util.List;
+
 import javax.inject.Singleton;
 
 @Singleton
@@ -14,4 +16,8 @@ public class TestQuestionRepository {
         testQuestionDao = appDatabase.testQuestionDao();
     }
     public void insert(TestQuestion... testQuestions){testQuestionDao.insert(testQuestions);}
+
+    public List<TestQuestion> getTestQuestionByTestId(int testId){
+        return testQuestionDao.getTestQuestionsByTestId(testId);
+    }
 }
