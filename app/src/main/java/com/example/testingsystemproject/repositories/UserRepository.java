@@ -21,6 +21,7 @@ public class UserRepository {
     public UserRepository(AppDatabase appDatabase) {
         this.userDao = appDatabase.userDao();
     }
+
     public boolean checkIfUserWithEmailExists(String email) {
         return userDao.checkIfUserWithEmailExists(email);
     }
@@ -38,5 +39,7 @@ public class UserRepository {
         return (List<User>) userDao.getById(userId);
     }
 
-    public int deleteByUserId(int userId){ return userDao.deleteByUserId(userId); }
+    public int deleteByUserId(int userId) {
+        return userDao.deleteByUserId(userId);
+    }
 }

@@ -22,64 +22,64 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class AccountActivity extends AppCompatActivity {
 
     private TextView textViewUsersPassword;
-    private TextView textViewUsersNickname;
+    private TextView textViewUsersName;
     private TextView textViewUsersResult;
     private TextView textViewUsersLogin;
     private TextView textViewUsersEmail;
 
     private List<User> userList;
+
     private User currentPassword;
-    private User currentNickname;
+    private User currentName;
+
     private User currentResult;
     private User currentLogin;
     private User currentEmail;
 
+    private User currentId;
 
     @Inject
     public UserRepository userRepository;
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
         textViewUsersPassword = findViewById(R.id.UsersPassword);
-        textViewUsersNickname = findViewById(R.id.UsersNamebd);
+        textViewUsersName = findViewById(R.id.UsersNamebd);
         textViewUsersResult = findViewById(R.id.LastScore);
         textViewUsersLogin = findViewById(R.id.UsersLogin);
         textViewUsersEmail = findViewById(R.id.UsersEmail);
-        // id from activity_account
         userList = userRepository.getById(savedInstanceState.getInt("userId"));
         Collections.shuffle(userList);
 
     }
 
     private void showUsersPassword(){
-        //textViewUsersPassword.setText(currentPassword.getPassword());
-        //Танин метод по вызову пароля из Юзерс бд
-        // getPassword, getNickname, getResult
-
-        //getLogin, getEmail
+        textViewUsersPassword.setText(currentPassword.passwordHash);
         }
-    //добавить Redirect в UsersInfo, TestResults
-    private void showUsersNickname(){
 
+    private void showUsersNickname(){
+        textViewUsersName.setText(currentName.firstName);
     }
     private void showLastResult(){
+        //спросить у тани в какой таблице храниться результат за тест и вписать сюда метод
 
     }
     private void showUsersLogin(){
-
+        textViewUsersLogin.setText(currentLogin.userName);
     }
 
     private void showUsersEmail(){
-
+        textViewUsersEmail.setText(currentEmail.email);
     }
-
+    public void DeleteAccount (View view){
+       userRepository.deleteByUserId(currentId.userId);
+    }
     public void RedirectToStartActivity1(View view) {
         Intent myIntent = new Intent(this, StartActivity.class);
         startActivity(myIntent);
     }
-
 
 }

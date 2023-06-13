@@ -11,4 +11,5 @@ public class QuestionWithAnswer {
 
     @Relation(parentColumn = "questionId", entityColumn = "question_id", entity = Answer.class)
     public List<Answer> answers;
+
 }
