@@ -35,9 +35,7 @@ public class AccountActivity extends AppCompatActivity {
     private User currentResult;
     private User currentLogin;
     private User currentEmail;
-
     private User currentId;
-
 
     @Inject
     public UserRepository userRepository;
