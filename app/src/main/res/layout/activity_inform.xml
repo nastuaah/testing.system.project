@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.example.testingsystemproject.RegisterActivity"
+    >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <androidx.cardview.widget.CardView
+            style="@style/loginCard"
+            app:cardCornerRadius="@dimen/loginCardRadius"
+            android:elevation="5dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/loginViewsMargin"
+            android:layout_marginBottom="@dimen/loginViewsMargin"
+            android:background="@color/whiteCardColor">
+
+            <LinearLayout
+                style="@style/linearParent"
+                android:layout_gravity="center"
+                android:padding="@dimen/loginViewsMargin">
+
+                <TextView
+                    style="@style/headerTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:text="User information" />
+
+                <TextView
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:clickable="true"
+                    android:onClick="RedirectToLogin"
+                    android:text="The information is available for viewing and editing!"
+                    android:textAlignment="center"
+                    android:textColor="@color/primaryTextColor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Login"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditUserNameAc"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Password"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditPassword"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Name"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditName"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Surname"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditSurname"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Middle Name"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditMiddleName"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Date of Birth"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditDateOfBirth"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/idEditTextDateOfBirth"
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Email"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditEmail"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Mobile Number"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditPhoneNumber"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Secret Question"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditSecurityQuestion"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:layout_marginTop="10dp"
+                    android:text="Answer for question"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/newsMoreTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/idEditQuestionAnswer"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/idBtnRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:backgroundTint="#00A4FE"
+                    android:bottomLeftRadius="10dp"
+                    android:bottomRightRadius="10dp"
+                    android:onClick="RedirectToLoginFinally"
+                    android:text="Back to Account"
+                    android:textColor="@color/white"
+                    android:topLeftRadius="10dp"
+                    android:topRightRadius="10dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </TableLayout>
+</ScrollView>
