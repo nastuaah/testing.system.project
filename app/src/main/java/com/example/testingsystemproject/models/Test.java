@@ -7,25 +7,19 @@ import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "categoryId", onDelete = ForeignKey.SET_NULL),
-        @ForeignKey(entity = Answer.class, parentColumns = "answerId", childColumns = "rightAnswer", onDelete = ForeignKey.SET_NULL)
+        @ForeignKey(entity = User.class, parentColumns = "userId", childColumns = "userId", onDelete = ForeignKey.SET_NULL)
 })
-public class Question {
-    public Question(String question,  long categoryId, long rightAnswer) {
-        this.question= question;
+public class Test {
+    public Test(long categoryId, long userId){
         this.categoryId = categoryId;
-        this.rightAnswer = rightAnswer;
+        this.userId = userId;
     }
-
     @PrimaryKey(autoGenerate = true)
-    public long questionId;
-
-    @ColumnInfo(name = "question")
-    public String question;
+    public long testId;
 
     @ColumnInfo(name = "categoryId")
     public long categoryId;
 
-    @ColumnInfo(name = "rightAnswer")
-    public long rightAnswer;
-
+    @ColumnInfo(name = "userId")
+    public long userId;
 }

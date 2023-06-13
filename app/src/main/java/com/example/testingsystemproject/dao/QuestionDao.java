@@ -4,8 +4,8 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.testingsystemproject.models.Category;
 import com.example.testingsystemproject.models.Question;
+import com.example.testingsystemproject.models.QuestionWithAnswer;
 
 import java.util.List;
 
@@ -13,8 +13,10 @@ import java.util.List;
 public interface QuestionDao {
     @Insert
     void insert(Question... questions);
-    @Query("SELECT * from question WHERE category_id = :categoryId ORDER BY questionId LIMIT :n")
-    List<Question> getByCategoryId(int categoryId, int n);
 
-    List<Question> getByCategoryId(int categoryId);
+    @Query("SELECT * FROM question WHERE categoryId = :categoryId ORDER BY questionId LIMIT :n")
+    List<QuestionWithAnswer> getByCategoryId(long categoryId, int n);
+
+    @Query("SELECT * FROM question WHERE categoryId = :categoryId AND questionId NOT IN (:questionIdList) ORDER BY questionId LIMIT :n")
+    List<QuestionWithAnswer> getNewQuestionByCategoryId(long categoryId, int n, List<Integer> questionIdList);
 }

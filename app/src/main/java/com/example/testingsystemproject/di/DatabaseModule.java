@@ -9,9 +9,14 @@ import com.example.testingsystemproject.database.AppDatabase;
 import com.example.testingsystemproject.models.Category;
 import com.example.testingsystemproject.models.Question;
 import com.example.testingsystemproject.models.SecurityQuestion;
+import com.example.testingsystemproject.models.TestQuestion;
+import com.example.testingsystemproject.models.UserAnswer;
 import com.example.testingsystemproject.repositories.CategoryRepository;
 import com.example.testingsystemproject.repositories.QuestionRepository;
 import com.example.testingsystemproject.repositories.SecurityQuestionRepository;
+import com.example.testingsystemproject.repositories.TestQuestionRepository;
+import com.example.testingsystemproject.repositories.TestRepository;
+import com.example.testingsystemproject.repositories.UserAnswerRepository;
 import com.example.testingsystemproject.repositories.UserRepository;
 
 import java.io.BufferedReader;
@@ -39,7 +44,7 @@ public class DatabaseModule {
     }
 
     private static void prepopulate(AppDatabase db) {
-        db.runInTransaction(() ->  {
+        db.runInTransaction(() -> {
             db.securityQuestionDao().insert(
                     new SecurityQuestion("Option 1"),
                     new SecurityQuestion("Option 2"),
@@ -61,7 +66,7 @@ public class DatabaseModule {
     }
 
     private static void prepopulateQuestions(AppDatabase db) throws IOException {
-        for (String fileName: MyApplication.instance.getAssets().list("questionsByCategory")) {
+        for (String fileName : MyApplication.instance.getAssets().list("questionsByCategory")) {
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(MyApplication.instance.getAssets().open("questionsByCategory/" + fileName), StandardCharsets.UTF_8))
             ) {
@@ -93,5 +98,20 @@ public class DatabaseModule {
     @Provides
     public static SecurityQuestionRepository provideSecurityQuestionRepository(AppDatabase appDatabase) {
         return new SecurityQuestionRepository(appDatabase);
+    }
+
+    @Provides
+    public static UserAnswerRepository provideUserAnswerRepository(AppDatabase appDatabase) {
+        return new UserAnswerRepository(appDatabase);
+    }
+
+    @Provides
+    public static TestRepository provideTestRepository(AppDatabase appDatabase) {
+        return new TestRepository(appDatabase);
+    }
+
+    @Provides
+    public static TestQuestionRepository provideTestQuestionRepository(AppDatabase appDatabase) {
+        return new TestQuestionRepository(appDatabase);
     }
 }
