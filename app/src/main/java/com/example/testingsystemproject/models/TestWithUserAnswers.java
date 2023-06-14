@@ -5,10 +5,9 @@ import androidx.room.Relation;
 
 import java.util.List;
 
-public class TestWithUserAnswer {
+public class TestWithUserAnswers {
     @Embedded
-    public Test userId;
-
+    public Test test;
     @Relation(parentColumn = "userId", entityColumn = "user_id", entity = UserAnswer.class)
     public List<UserAnswer> userAnswers;
 }

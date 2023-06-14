@@ -2,7 +2,6 @@ package com.example.testingsystemproject.dao;
 
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -28,5 +27,8 @@ public interface UserDao {
     boolean checkIfUserWithEmailExists(String email);
 
     @Query("DELETE FROM user WHERE userId = :userId")
-    int deleteByUserId(int userId);
+    void deleteById(int userId);
+
+    @Query("SELECT * FROM user WHERE userName = :userName")
+    User getByUserName(String userName);
 }

@@ -1,17 +1,12 @@
 package com.example.testingsystemproject.repositories;
 
-import androidx.room.Query;
-
-import com.example.testingsystemproject.models.Question;
-import com.example.testingsystemproject.models.User;
-
 import com.example.testingsystemproject.dao.UserDao;
 import com.example.testingsystemproject.database.AppDatabase;
 import com.example.testingsystemproject.helpers.EncryptionHelper;
 import com.example.testingsystemproject.models.User;
 
-import java.util.List;
 import java.util.Objects;
+
 import javax.inject.Singleton;
 
 @Singleton
@@ -30,16 +25,17 @@ public class UserRepository {
         userDao.insert(user);
     }
 
-    public boolean authenticate(String userName, String password) {
+    public User authenticate(String userName, String password) {
         String passwordHashFromDatabase = userDao.getPasswordByUserName(userName);
-        return Objects.equals(passwordHashFromDatabase, EncryptionHelper.toSHA256String(password));
+        if (!Objects.equals(passwordHashFromDatabase, EncryptionHelper.toSHA256String(password))) return null;
+        return userDao.getByUserName(userName);
     }
 
-    public List<User> getById(int userId) {
-        return (List<User>) userDao.getById(userId);
+    public User getById(int userId) {
+        return userDao.getById(userId);
     }
 
-    public int deleteByUserId(int userId) {
-        return userDao.deleteByUserId(userId);
+    public void deleteById(int userId) {
+        userDao.deleteById(userId);
     }
 }

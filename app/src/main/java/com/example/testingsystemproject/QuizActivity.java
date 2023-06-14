@@ -5,7 +5,9 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -15,54 +17,49 @@ import com.example.testingsystemproject.models.QuestionWithAnswer;
 import com.example.testingsystemproject.repositories.QuestionRepository;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
+enum QuizState {
+    Question,
+    Solution
+}
+
 @AndroidEntryPoint
 public class QuizActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE = "extraScore";
-    private static final long COUNTDOWN_IN_MILLIS = 30000;
+    private static final long ONE_ANSWER_COUNT_DOWN_TIME_IN_MILLISECONDS = 30000;
 
     private TextView textViewQuestion;
     private TextView textViewScore;
     private TextView textViewQuestionCount;
     private TextView textViewCountDown;
     private RadioGroup rbGroup;
-    private RadioButton rb1;
-    private RadioButton rb2;
-    private RadioButton rb3;
+    private final ArrayList<RadioButton> radioButtons = new ArrayList<>(3);
     private Button buttonConfirmNext;
 
-    private ColorStateList textColorDefaultRb;
-    private ColorStateList textColorDefaultCd;
+    private ColorStateList textColorDefaultRadioButtons;
+    private ColorStateList textColorDefaultCoolDown;
 
     private CountDownTimer countDownTimer;
     private long timeLeftInMillis;
 
-    private List<QuestionWithAnswer> questionList;
-
-    private List<QuestionWithAnswer> addQuestionList;
-
-    private int questionCounter;
-
-    private int addQuestionCounter;
-
-    public final int questionCountTotal=5;
-
-    public final int addQuestionCountTotal=10;
-    private QuestionWithAnswer currentQuestion;
-
-    private QuestionWithAnswer additionalQuestion;
-
+    private long categoryId = -1;
+    private final ArrayList<QuestionWithAnswer> questionList = new ArrayList<>();
+    private int currentQuestionIndex = 0;
+    private static final int initial_requested_question_count = 5;
+    public final int additional_requested_question_count = 10;
     private int score;
-    private boolean answered;
-
     private long backPressedTime;
+    private QuizState state = QuizState.Question;
 
     @Inject
     public QuestionRepository questionRepository;
@@ -71,60 +68,79 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz);
+        bindViews();
 
+        textColorDefaultRadioButtons = radioButtons.get(0).getTextColors();
+        textColorDefaultCoolDown = textViewCountDown.getTextColors();
+        categoryId = getIntent().getIntExtra("categoryId", -1);
+        getNewQuestions(initial_requested_question_count);
+        showNextQuestion();
+        buttonConfirmNext.setOnClickListener(this::onNextButton);
+    }
+
+    private void onNextButton(View v) {
+        boolean anyButtonIsChecked = radioButtons.stream().anyMatch(CompoundButton::isChecked);
+        switch (state) {
+            case Question:
+                if (!anyButtonIsChecked) {
+                    Snackbar.make(v, R.string.enforce_answer, BaseTransientBottomBar.LENGTH_SHORT).show();
+                    return;
+                }
+                checkAnswer();
+                state = QuizState.Solution;
+                showSolution();
+                break;
+            case Solution:
+                state = QuizState.Question;
+                showNextQuestion();
+                break;
+        }
+    }
+
+    private void getNewQuestions(int n) {
+        List<QuestionWithAnswer> fromRepo = questionRepository.getByCategoryId(categoryId, n, questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()));
+        Collections.shuffle(fromRepo);
+        questionList.addAll(fromRepo);
+    }
+
+    private void bindViews() {
         textViewQuestion = findViewById(R.id.text_view_question);
         textViewScore = findViewById(R.id.text_view_score);
         textViewQuestionCount = findViewById(R.id.text_view_question_count);
         textViewCountDown = findViewById(R.id.text_view_countdown);
         rbGroup = findViewById(R.id.radio_group);
-        rb1 = findViewById(R.id.radio_button1);
-        rb2 = findViewById(R.id.radio_button2);
-        rb3 = findViewById(R.id.radio_button3);
+        radioButtons.add((RadioButton) findViewById(R.id.radio_button1));
+        radioButtons.add((RadioButton) findViewById(R.id.radio_button2));
+        radioButtons.add((RadioButton) findViewById(R.id.radio_button3));
         buttonConfirmNext = findViewById(R.id.button_confirm_next);
-
-        textColorDefaultRb = rb1.getTextColors();
-        textColorDefaultCd = textViewCountDown.getTextColors();
-        questionList = questionRepository.getByCategoryId(savedInstanceState.getInt("categoryId"), questionCountTotal);
-        addQuestionList = questionRepository.getByCategoryId(savedInstanceState.getInt("categoryId"), addQuestionCounter);
-        Collections.shuffle(questionList);
-        Collections.shuffle(addQuestionList);
-        showNextQuestion();
-
-        buttonConfirmNext.setOnClickListener(v -> {
-            if (!answered) {
-                if (rb1.isChecked() || rb2.isChecked() || rb3.isChecked()) checkAnswer();
-                else
-                    Snackbar.make(v, R.string.enforce_answer, BaseTransientBottomBar.LENGTH_SHORT).show();
-                return;
-            }
-            showNextQuestion();
-        });
     }
 
     private void showNextQuestion() {
-        rb1.setTextColor(textColorDefaultRb);
-        rb2.setTextColor(textColorDefaultRb);
-        rb3.setTextColor(textColorDefaultRb);
-        rbGroup.clearCheck();
-
-        if (questionCounter < questionCountTotal) {
-            currentQuestion = questionList.get(questionCounter);
-
-            textViewQuestion.setText(currentQuestion.question.question);
-            rb1.setText(currentQuestion.answers.get(0).answer);
-            rb2.setText(currentQuestion.answers.get(1).answer);
-            rb3.setText(currentQuestion.answers.get(2).answer);
-
-            questionCounter++;
-            textViewQuestionCount.setText("Question: " + questionCounter + "/" + questionCountTotal);
-            answered = false;
-            buttonConfirmNext.setText("Confirm");
-
-            timeLeftInMillis = COUNTDOWN_IN_MILLIS;
-            startCountDown();
+        resetView();
+        if (currentQuestionIndex >= questionList.size())
+        {
+            finishQuiz();
             return;
         }
-        finishQuiz();
+        QuestionWithAnswer currentQuestion = questionList.get(currentQuestionIndex);
+        textViewQuestion.setText(currentQuestion.question.question);
+        for (int i = 0; i < 2; i++)
+            radioButtons.get(i).setText(currentQuestion.answers.get(i).answer);
+        textViewQuestionCount.setText("Question: " + (currentQuestionIndex + 1) + "/" + questionList.size());
+        buttonConfirmNext.setText("Confirm");
+        timeLeftInMillis = ONE_ANSWER_COUNT_DOWN_TIME_IN_MILLISECONDS;
+        startCountDown();
+        currentQuestionIndex++;
+    }
+
+    private void resetView() {
+        setDefaultColorOnRadioButtons();
+        textViewCountDown.setTextColor(textColorDefaultCoolDown);
+        rbGroup.clearCheck();
+    }
+
+    private void setDefaultColorOnRadioButtons() {
+        for (RadioButton rb: radioButtons) rb.setTextColor(textColorDefaultRadioButtons);
     }
 
     private void startCountDown() {
@@ -154,83 +170,52 @@ public class QuizActivity extends AppCompatActivity {
 
         if (timeLeftInMillis < 10000) {
             textViewCountDown.setTextColor(Color.RED);
-        } else {
-            textViewCountDown.setTextColor(textColorDefaultCd);
         }
     }
 
     private void checkAnswer() {
-        answered = true;
-
         countDownTimer.cancel();
 
         RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
         int answerIndex = rbGroup.indexOfChild(rbSelected);
-
-        if (currentQuestion.answers.get(answerIndex).answerId==currentQuestion.question.rightAnswerId) {
+        QuestionWithAnswer currentQuestion = questionList.get(currentQuestionIndex - 1);
+        long rightAnswerId = currentQuestion.question.rightAnswerId;
+        long userAnswerId = currentQuestion.answers.get(answerIndex).answerId;
+        //TODO: Code duplication, refactor
+        if (userAnswerId == rightAnswerId) {
             score++;
             textViewScore.setText("Score: " + score);
+            if (timeLeftInMillis > 15000 && questionList.size() < 15)
+            {
+                Snackbar.make(buttonConfirmNext.getRootView(), "Будут добавлены дополнительные вопросы", BaseTransientBottomBar.LENGTH_SHORT).show();
+                getNewQuestions(additional_requested_question_count);
+            }
+            return;
         }
-        showSolution();
+        if (questionList.size() < 15)
+        {
+            Snackbar.make(buttonConfirmNext.getRootView(), "Будут добавлены дополнительные вопросы", BaseTransientBottomBar.LENGTH_SHORT).show();
+            getNewQuestions(additional_requested_question_count);
+        }
     }
 
     private void showSolution() {
-        rb1.setTextColor(Color.RED);
-        rb2.setTextColor(Color.RED);
-        rb3.setTextColor(Color.RED);
+        for (RadioButton rb: radioButtons) rb.setTextColor(Color.RED);
 
         int rightAnswerIndex = -1;
-
-        for (int i=0; i<currentQuestion.answers.size(); i++){
-            if (currentQuestion.answers.get(i).answerId==currentQuestion.question.rightAnswerId){
+        QuestionWithAnswer currentQuestion = questionList.get(currentQuestionIndex - 1);
+        for (int i = 0; i < currentQuestion.answers.size(); i++){
+            if (currentQuestion.answers.get(i).answerId == currentQuestion.question.rightAnswerId){
                 rightAnswerIndex=i;
                 break;
             }
         }
-
-        switch (rightAnswerIndex) {
-            case 1:
-                rb1.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Answer 1 is correct");
-                break;
-            case 2:
-                rb2.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Answer 2 is correct");
-                break;
-            case 3:
-                rb3.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Answer 3 is correct");
-                break;
-        }
-
-        if (questionCounter < questionCountTotal) {
-            buttonConfirmNext.setText("Next");
-        } else {
-            buttonConfirmNext.setText("Finish");
-        }
+        radioButtons.get(rightAnswerIndex).setTextColor(Color.GREEN);
+        textViewQuestion.setText("Answer" + (rightAnswerIndex + 1) + " is correct");
+        buttonConfirmNext.setText(currentQuestionIndex < questionList.size() ? "Next" : "Finish");
     }
-
-    private void addQuestion() {
-
-        RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
-        int answerIndex = rbGroup.indexOfChild(rbSelected);
-
-        if (timeLeftInMillis <= 20000 || currentQuestion.answers.get(answerIndex).answerId!=currentQuestion.question.rightAnswerId) {
-            addQuestionCounter = +1;
-            while (addQuestionCounter < addQuestionCountTotal) {
-                additionalQuestion = addQuestionList.get(addQuestionCounter);
-                textViewQuestion.setText(additionalQuestion.question.question);
-                rb1.setText(additionalQuestion.answers.get(0).answer);
-                rb2.setText(additionalQuestion.answers.get(1).answer);
-                rb3.setText(additionalQuestion.answers.get(2).answer);
-            }
-            showSolution();
-        }
-    }
-
 
     private void finishQuiz() {
-        addQuestion();
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
         setResult(RESULT_OK, resultIntent);

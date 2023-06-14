@@ -3,7 +3,7 @@ package com.example.testingsystemproject.repositories;
 import com.example.testingsystemproject.dao.TestDao;
 import com.example.testingsystemproject.database.AppDatabase;
 import com.example.testingsystemproject.models.Test;
-import com.example.testingsystemproject.models.TestWithUserAnswer;
+import com.example.testingsystemproject.models.TestWithUserAnswers;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class TestRepository {
     public List<Test> getTestByUserId(int userId){
         return testDao.getTestByUserId(userId);
     }
-    public List<TestWithUserAnswer> getTestWithUserAnswerByUserId(int userId){
+    public List<TestWithUserAnswers> getTestWithUserAnswerByUserId(int userId){
         return testDao.getTestWithUserAnswerByUserId(userId);
     }
 }

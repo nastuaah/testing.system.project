@@ -84,7 +84,7 @@
             android:layout_gravity="bottom|center"
             android:layout_margin="10dp"
             android:backgroundTint="@color/primaryTextColor"
-            android:onClick="RedirectToStartActivity1"
+            android:onClick="redirectToStartActivity"
             android:text="Back to Account"
             android:textColor="@color/white"
             android:textSize="18sp"

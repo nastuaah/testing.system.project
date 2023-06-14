@@ -6,11 +6,10 @@ import androidx.room.Room;
 
 import com.example.testingsystemproject.MyApplication;
 import com.example.testingsystemproject.database.AppDatabase;
+import com.example.testingsystemproject.models.Answer;
 import com.example.testingsystemproject.models.Category;
 import com.example.testingsystemproject.models.Question;
 import com.example.testingsystemproject.models.SecurityQuestion;
-import com.example.testingsystemproject.models.TestQuestion;
-import com.example.testingsystemproject.models.UserAnswer;
 import com.example.testingsystemproject.repositories.CategoryRepository;
 import com.example.testingsystemproject.repositories.QuestionRepository;
 import com.example.testingsystemproject.repositories.SecurityQuestionRepository;
@@ -23,6 +22,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import dagger.Module;
 import dagger.Provides;
@@ -74,7 +76,13 @@ public class DatabaseModule {
                 while ((mLine = reader.readLine()) != null) {
                     String[] parts = mLine.substring(0, mLine.length() - 1).split("\\(");
                     String[] answers = parts[1].split(",");
-                    //db.questionDao().insert(new Question(parts[0], answers[0], answers[1], answers[2], -1, Integer.parseInt(fileName.split("\\.")[0])));
+                    int categoryId = Integer.parseInt(fileName.split("\\.")[0]);
+                    Question question = new Question(parts[0], categoryId, null);
+                    long questionId = db.questionDao().insertQuestion(question);
+                    List<Answer> answerList = Arrays.stream(answers).map(x -> new Answer(x.trim(), questionId, categoryId)).collect(Collectors.toList());
+                    long[] answerIds = db.questionDao().insertAnswers(answerList);
+                    //TODO: set actual right answer
+                    db.questionDao().setRightAnswer(questionId, answerIds[0]);
                 }
             }
         }

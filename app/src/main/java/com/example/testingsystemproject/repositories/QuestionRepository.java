@@ -14,10 +14,7 @@ public class QuestionRepository {
     public QuestionRepository(AppDatabase appDatabase) {
         dao = appDatabase.questionDao();
     }
-    public List<QuestionWithAnswer> getByCategoryId(int categoryId, int n){
-        return dao.getByCategoryId(categoryId, n);
-    }
-    public List<QuestionWithAnswer> getNewQuestionByCategoryId(int categoryId, int n, List<Integer> questionIdList){
-        return dao.getNewQuestionByCategoryId(categoryId, n, questionIdList);
+    public List<QuestionWithAnswer> getByCategoryId(long categoryId, int n, List<Long> except){
+        return dao.getByCategoryId(categoryId, n, except);
     }
 }

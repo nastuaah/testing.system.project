@@ -3,9 +3,10 @@ package com.example.testingsystemproject.dao;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 
 import com.example.testingsystemproject.models.Test;
-import com.example.testingsystemproject.models.TestWithUserAnswer;
+import com.example.testingsystemproject.models.TestWithUserAnswers;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public interface TestDao {
     @Query("SELECT * FROM test WHERE userId = :userId")
     List<Test> getTestByUserId(int userId);
 
+    @Transaction
     @Query("SELECT * FROM test WHERE userId = :userId")
-    List<TestWithUserAnswer> getTestWithUserAnswerByUserId(int userId);
+    List<TestWithUserAnswers> getTestWithUserAnswerByUserId(int userId);
 }
