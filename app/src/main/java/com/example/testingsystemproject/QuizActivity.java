@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -219,7 +220,15 @@ public class QuizActivity extends AppCompatActivity {
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
         setResult(RESULT_OK, resultIntent);
+        showToast(textViewScore);
         finish();
+    }
+
+    public  void showToast(View view){
+
+        Toast toast = Toast.makeText(this, "Your last score:" + score, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 100,460);
+        toast.show();
     }
 
     @Override
