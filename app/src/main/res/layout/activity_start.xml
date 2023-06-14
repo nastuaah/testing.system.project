@@ -80,7 +80,7 @@
             android:layout_marginTop="120dp"
             android:backgroundTint="@color/primaryTextColor"
             android:clickable="true"
-            android:onClick="RedirectToQuiz"
+            android:onClick="RedirectToOptionActivity"
             android:text="START NEW GAME"
             android:textAlignment="center"
             android:textColor="@color/white"
