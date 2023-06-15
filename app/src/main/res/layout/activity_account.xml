@@ -156,10 +156,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
+                                android:onClick="RedirectToUserInfo"
                                 android:background="@drawable/circle_background">
 
                                 <ImageView
-                                    android:id="@+id/RedirecttoInfo"
+                                    android:id="@+id/RedirectToInfo"
                                     android:layout_width="69dp"
                                     android:layout_height="80dp"
                                     android:onClick="RedirectToUserInfo"

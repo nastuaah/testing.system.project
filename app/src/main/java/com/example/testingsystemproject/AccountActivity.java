@@ -1,5 +1,6 @@
 package com.example.testingsystemproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -44,12 +45,14 @@ public class AccountActivity extends AppCompatActivity {
 
 
     }
-    private void showLastResult() {
-        //спросить у тани в какой таблице храниться результат за тест и вписать сюда метод
 
-    }
     public void DeleteAccount (View view){
         userRepository.deleteById(user.userId);
+    }
+
+    public void RedirectToUserInfo (View view){
+        Intent myIntent = new Intent(this, UserActivity.class);
+        startActivity(myIntent);
     }
     public void redirectToStartActivity(View view) {
         finish();
