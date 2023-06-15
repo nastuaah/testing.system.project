@@ -64,6 +64,8 @@ public class QuizActivity extends AppCompatActivity {
 
     List answersList = new ArrayList();
 
+    List <Boolean> rightAnswerList = new ArrayList<>();
+
     private int currentQuestionIndex = 0;
     private static final int initial_requested_question_count = 5;
     public final int additional_requested_question_count = 10;
@@ -196,6 +198,8 @@ public class QuizActivity extends AppCompatActivity {
         long rightAnswerId = currentQuestion.question.rightAnswerId;
         long userAnswerId = currentQuestion.answers.get(answerIndex).answerId;
         //TODO: Code duplication, refactor
+        rightAnswerList.add(userAnswerId == rightAnswerId);
+        answersList.add(userAnswerId);
         if (userAnswerId == rightAnswerId) {
             score++;
             textViewScore.setText("Score: " + score);
@@ -211,7 +215,6 @@ public class QuizActivity extends AppCompatActivity {
             Snackbar.make(buttonConfirmNext.getRootView(), "Будут добавлены дополнительные вопросы", BaseTransientBottomBar.LENGTH_SHORT).show();
             getNewQuestions(additional_requested_question_count);
         }
-        answersList.add(userAnswerId);
     }
 
     private void showSolution() {
@@ -231,7 +234,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-        TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()));
+        TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()),rightAnswerList);
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
         setResult(RESULT_OK, resultIntent);
