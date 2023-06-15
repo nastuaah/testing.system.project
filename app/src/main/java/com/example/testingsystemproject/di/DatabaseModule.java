@@ -82,7 +82,6 @@ public class DatabaseModule {
                     long questionId = db.questionDao().insertQuestion(question);
                     List<Answer> answerList = Arrays.stream(answers).map(x -> new Answer(x.trim(), questionId, categoryId)).collect(Collectors.toList());
                     long[] answerIds = db.questionDao().insertAnswers(answerList);
-                    //TODO: set actual right answer
                     db.questionDao().setRightAnswer(questionId, answerIds[index]);
                 }
             }
