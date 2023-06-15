@@ -14,6 +14,8 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,6 +40,7 @@
                     android:layout_width="411dp"
                     android:layout_height="264dp"
                     android:background="@drawable/background_acc_"
+                    android:foregroundGravity="center"
                     app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -45,41 +48,37 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0">
 
-                    <TextView
-                        android:id="@+id/UsersLogin"
-                        android:layout_width="105dp"
-                        android:layout_height="26dp"
-                        android:text="Name User"
-                        android:textColor="#ffffff"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/textView5"
-                        app:layout_constraintStart_toStartOf="@+id/textView5"
-                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
                     <TextView
-                        android:id="@+id/UsersEmail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="e-mail"
-                        android:textColor="#ffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/UsersLogin"
-                        app:layout_constraintStart_toStartOf="@+id/UsersLogin"
-                        app:layout_constraintTop_toBottomOf="@+id/UsersLogin" />
-
-                    <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/textView4"
                         android:layout_width="205dp"
                         android:layout_height="58dp"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginTop="88dp"
+                        android:layout_marginEnd="91dp"
+                        android:layout_marginBottom="1dp"
                         android:gravity="center"
-                        android:text="Welcome!"
+                        android:text="Welcome !"
                         android:textColor="@color/white"
-                        android:textSize="40dp"
+                        android:textSize="34dp"
                         android:textStyle="bold"
-                        tools:layout_editor_absoluteX="107dp"
-                        tools:layout_editor_absoluteY="76dp" />
+                        app:layout_constraintBottom_toTopOf="@+id/UsersName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/UsersName"
+                        android:layout_width="105dp"
+                        android:layout_height="33dp"
+                        android:layout_marginTop="1dp"
+                        android:text="User Name"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/textView4"
+                        app:layout_constraintStart_toStartOf="@+id/textView4"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
@@ -123,9 +122,9 @@
 
                                 <ImageView
                                     android:id="@+id/RedirecttoResults"
-                                    android:onClick="RedirectToTestResults"
                                     android:layout_width="69dp"
                                     android:layout_height="80dp"
+                                    android:onClick="RedirectToTestResults"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.516"
@@ -154,7 +153,8 @@
                             android:layout_height="match_parent"
                             android:layout_margin="10dp"
                             android:layout_weight="0.3333"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:onClick="RedirectToUserInfo">
 
                             <ImageView
                                 android:layout_width="match_parent"
@@ -165,13 +165,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
+                                android:onClick="RedirectToUserInfo"
                                 android:background="@drawable/circle_background">
 
                                 <ImageView
-                                    android:id="@+id/RedirecttoInfo"
-                                    android:onClick="RedirectToUserInfo"
+                                    android:id="@+id/RedirectTInfo"
                                     android:layout_width="69dp"
                                     android:layout_height="80dp"
+                                    android:onClick="RedirectToUserInfo"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.516"
@@ -191,7 +192,8 @@
                                 android:textAlignment="center"
                                 android:textColor="@color/colorAccent"
                                 android:textSize="14sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="RedirectToUserInfo"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -216,13 +218,13 @@
                                     android:id="@+id/DeleteAccount"
                                     android:layout_width="69dp"
                                     android:layout_height="80dp"
+                                    android:onClick="DeleteAccount"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.516"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintVertical_bias="0.0"
-                                    android:onClick="DeleteAccount"
                                     app:srcCompat="@android:drawable/ic_menu_delete" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -251,17 +253,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Password:"
+                            android:text="Email:"
                             android:textColor="#00A5FF"
                             android:textSize="24sp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/UsersPassword"
+                            android:id="@+id/UsersEmail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Change"
+                            android:text="Your email"
                             android:textAlignment="viewEnd"
                             android:textColor="#5B5B5B"
                             android:textSize="18sp" />
@@ -293,7 +295,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/UsersNamebd"
+                            android:id="@+id/UsersLogin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

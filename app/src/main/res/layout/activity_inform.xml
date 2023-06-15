@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:id="@+id/RedirectToUserInfo"
     tools:context="com.example.testingsystemproject.RegisterActivity"
     >
 
@@ -44,6 +45,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/UsersLogin"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Login"
@@ -63,6 +65,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/UsersPassword"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Password"
@@ -82,6 +85,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/UsersName"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Name"
@@ -101,6 +105,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/UsersSurname"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Surname"
@@ -120,6 +125,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/UsersMiddleName"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Middle Name"
@@ -139,6 +145,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/UsersDateOfBirth"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Date of Birth"
@@ -162,6 +169,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/UsersEmail"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Email"
@@ -181,6 +189,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/UsersMobileNumber"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Mobile Number"
@@ -200,6 +209,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/UsersSecretQuestion"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Secret Question"
@@ -219,6 +229,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:id="@+id/UsersAnswer"
                     style="@style/viewParent"
                     android:layout_marginTop="10dp"
                     android:text="Answer for question"
