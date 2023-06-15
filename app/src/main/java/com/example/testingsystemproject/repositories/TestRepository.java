@@ -1,5 +1,7 @@
 package com.example.testingsystemproject.repositories;
 
+import androidx.room.Transaction;
+
 import com.example.testingsystemproject.dao.TestDao;
 import com.example.testingsystemproject.dao.TestQuestionDao;
 import com.example.testingsystemproject.dao.UserAnswerDao;
@@ -16,12 +18,14 @@ import javax.inject.Singleton;
 
 @Singleton
 public class TestRepository {
-    private TestDao testDao;
-    private TestQuestionDao testQuestionDao;
-    private UserAnswerDao userAnswerDao;
+    private final TestDao testDao;
+    private final TestQuestionDao testQuestionDao;
+    private final AppDatabase db;
+    private final UserAnswerDao userAnswerDao;
 
     public TestRepository(AppDatabase appDatabase) {
         this.testDao = appDatabase.testDao();
+        this.db = appDatabase;
         this.testQuestionDao = appDatabase.testQuestionDao();
         this.userAnswerDao = appDatabase.userAnswerDao();
     }
@@ -29,15 +33,18 @@ public class TestRepository {
         return testDao.getTestWithUserAnswerByUserId(userId);
     }
     public void SaveTestResult(TestResult testResult){
-        Test test = new Test(testResult.getCategoryId(), testResult.getUserId());
-        testDao.insert(test);
-        for (int i=0; i < testResult.getQuestionId().size(); i++) {
-            TestQuestion testQuestion = new TestQuestion(testResult.getCategoryId(), testResult.getQuestionId().get(i));
-            testQuestionDao.insert(testQuestion);
-        }
-        for (int i=0; i < testResult.getAnswerId().size(); i++) {
-            UserAnswer userAnswer = new UserAnswer(testResult.getUserId(), testResult.getAnswerId().get(i), testResult.getAnsweredCorrectly().get(i));
-            userAnswerDao.insert(userAnswer);
-        }
+        db.runInTransaction(() -> {
+            ;
+            Test test = new Test(testResult.getCategoryId(), testResult.getUserId());
+            testDao.insert(test);
+            for (int i = 0; i < testResult.getQuestionId().size(); i++) {
+                TestQuestion testQuestion = new TestQuestion(testResult.getCategoryId(), testResult.getQuestionId().get(i));
+                testQuestionDao.insert(testQuestion);
+            }
+            for (int i = 0; i < testResult.getAnswerId().size(); i++) {
+                UserAnswer userAnswer = new UserAnswer(testResult.getUserId(), testResult.getAnswerId().get(i), testResult.getAnsweredCorrectly().get(i));
+                userAnswerDao.insert(userAnswer);
+            }
+        });
     }
 }
