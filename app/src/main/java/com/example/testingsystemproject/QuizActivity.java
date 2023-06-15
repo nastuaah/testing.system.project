@@ -14,13 +14,18 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.testingsystemproject.dtos.TestResult;
 import com.example.testingsystemproject.models.QuestionWithAnswer;
 import com.example.testingsystemproject.repositories.QuestionRepository;
+import com.example.testingsystemproject.repositories.TestRepository;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -54,13 +59,18 @@ public class QuizActivity extends AppCompatActivity {
     private long timeLeftInMillis;
 
     private long categoryId = -1;
+
     private final ArrayList<QuestionWithAnswer> questionList = new ArrayList<>();
+
+    List answersList = new ArrayList();
+
     private int currentQuestionIndex = 0;
     private static final int initial_requested_question_count = 5;
     public final int additional_requested_question_count = 10;
     private int score;
     private long backPressedTime;
     private QuizState state = QuizState.Question;
+
 
     @Inject
     public QuestionRepository questionRepository;
@@ -198,6 +208,7 @@ public class QuizActivity extends AppCompatActivity {
             Snackbar.make(buttonConfirmNext.getRootView(), "Будут добавлены дополнительные вопросы", BaseTransientBottomBar.LENGTH_SHORT).show();
             getNewQuestions(additional_requested_question_count);
         }
+        answersList.add(userAnswerId);
     }
 
     private void showSolution() {
@@ -217,6 +228,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
+        TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()));
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
         setResult(RESULT_OK, resultIntent);
@@ -249,4 +261,5 @@ public class QuizActivity extends AppCompatActivity {
             countDownTimer.cancel();
         }
     }
+
 }
