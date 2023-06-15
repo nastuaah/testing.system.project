@@ -54,6 +54,12 @@ public class AccountActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, UserActivity.class);
         startActivity(myIntent);
     }
+    public void RedirectToTestResults(View view) {
+        Intent myIntent = new Intent(this, TestResActivity.class);
+        startActivity(myIntent);
+    }
+
+
     public void redirectToStartActivity(View view) {
         finish();
     }

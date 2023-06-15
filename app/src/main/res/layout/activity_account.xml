@@ -153,7 +153,8 @@
                             android:layout_height="match_parent"
                             android:layout_margin="10dp"
                             android:layout_weight="0.3333"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:onClick="RedirectToUserInfo">
 
                             <ImageView
                                 android:layout_width="match_parent"
@@ -168,7 +169,7 @@
                                 android:background="@drawable/circle_background">
 
                                 <ImageView
-                                    android:id="@+id/RedirectToInfo"
+                                    android:id="@+id/RedirectTInfo"
                                     android:layout_width="69dp"
                                     android:layout_height="80dp"
                                     android:onClick="RedirectToUserInfo"
@@ -191,7 +192,8 @@
                                 android:textAlignment="center"
                                 android:textColor="@color/colorAccent"
                                 android:textSize="14sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:onClick="RedirectToUserInfo"/>
                         </LinearLayout>
 
                         <LinearLayout
