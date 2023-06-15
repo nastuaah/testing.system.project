@@ -125,7 +125,7 @@ public class QuizActivity extends AppCompatActivity {
         }
         QuestionWithAnswer currentQuestion = questionList.get(currentQuestionIndex);
         textViewQuestion.setText(currentQuestion.question.question);
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
             radioButtons.get(i).setText(currentQuestion.answers.get(i).answer);
         textViewQuestionCount.setText("Question: " + (currentQuestionIndex + 1) + "/" + questionList.size());
         buttonConfirmNext.setText("Confirm");
