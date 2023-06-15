@@ -100,9 +100,9 @@
 
                 <TextView
                     android:id="@+id/text_view_question"
-                    android:layout_width="323dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="100dp"
+                    android:layout_width="311dp"
+                    android:layout_height="122dp"
+                    android:layout_marginTop="60dp"
                     android:layout_marginBottom="16dp"
                     android:text="Here will be the question text\nHere will be the question text\nHere will be the question text"
                     android:textAlignment="center"
@@ -112,19 +112,18 @@
 
                 <RadioGroup
                     android:id="@+id/radio_group"
-                    android:layout_width="wrap_content"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true">
 
                     <RadioButton
                         android:id="@+id/radio_button1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Option 1"
                         android:textColor="#00A4FE"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
 
                     <RadioButton
                         android:id="@+id/radio_button2"
@@ -136,7 +135,7 @@
 
                     <RadioButton
                         android:id="@+id/radio_button3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:text="Option 3"
                         android:textColor="#00A4FE"

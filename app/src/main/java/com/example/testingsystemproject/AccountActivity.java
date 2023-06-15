@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.testingsystemproject.models.QuestionWithAnswer;
 import com.example.testingsystemproject.models.User;
 import com.example.testingsystemproject.repositories.UserRepository;
 
@@ -16,11 +17,11 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class AccountActivity extends AppCompatActivity {
 
-    private TextView textViewUsersPassword;
     private TextView textViewUsersName;
     private TextView textViewUsersResult;
     private TextView textViewUsersLogin;
     private TextView textViewUsersEmail;
+
 
     private final User user = MyApplication.instance.user;
 
@@ -32,11 +33,16 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-        textViewUsersPassword = findViewById(R.id.UsersPassword);
-        textViewUsersName = findViewById(R.id.UsersNamebd);
+        textViewUsersEmail = findViewById(R.id.UsersEmail);
+        textViewUsersName = findViewById(R.id.UsersName);
         textViewUsersResult = findViewById(R.id.LastScore);
         textViewUsersLogin = findViewById(R.id.UsersLogin);
-        textViewUsersEmail = findViewById(R.id.UsersEmail);
+
+        textViewUsersName.setText(user.firstName);
+        textViewUsersLogin.setText(user.userName);
+        textViewUsersEmail.setText(user.email);
+
+
     }
     private void showLastResult() {
         //спросить у тани в какой таблице храниться результат за тест и вписать сюда метод

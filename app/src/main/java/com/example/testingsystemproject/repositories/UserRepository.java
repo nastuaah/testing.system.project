@@ -38,4 +38,8 @@ public class UserRepository {
     public void deleteById(int userId) {
         userDao.deleteById(userId);
     }
+
+    public User getByUserName(String userName) {
+        return userDao.getByUserName(userName);
+    }
 }
