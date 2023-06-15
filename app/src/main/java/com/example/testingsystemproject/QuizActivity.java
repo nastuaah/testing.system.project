@@ -75,6 +75,9 @@ public class QuizActivity extends AppCompatActivity {
     @Inject
     public QuestionRepository questionRepository;
 
+    @Inject
+    public TestRepository testRepository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
