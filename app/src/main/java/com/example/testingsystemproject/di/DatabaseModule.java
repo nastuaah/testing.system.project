@@ -74,15 +74,15 @@ public class DatabaseModule {
             ) {
                 String mLine;
                 while ((mLine = reader.readLine()) != null) {
-                    String[] parts = mLine.substring(0, mLine.length() - 1).split("\\(");
+                    String[] parts = mLine.substring(0, mLine.length()).split("/");
+                    int index = Integer.parseInt(parts[2]);
                     String[] answers = parts[1].split(",");
                     int categoryId = Integer.parseInt(fileName.split("\\.")[0]);
                     Question question = new Question(parts[0], categoryId, null);
                     long questionId = db.questionDao().insertQuestion(question);
                     List<Answer> answerList = Arrays.stream(answers).map(x -> new Answer(x.trim(), questionId, categoryId)).collect(Collectors.toList());
                     long[] answerIds = db.questionDao().insertAnswers(answerList);
-                    //TODO: set actual right answer
-                    db.questionDao().setRightAnswer(questionId, answerIds[0]);
+                    db.questionDao().setRightAnswer(questionId, answerIds[index]);
                 }
             }
         }

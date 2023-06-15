@@ -23,6 +23,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -64,7 +65,7 @@ public class QuizActivity extends AppCompatActivity {
 
     List answersList = new ArrayList();
 
-    List <Boolean> rightAnswerList = new ArrayList<>();
+    List <Boolean> rightAnswersList = new ArrayList<>();
 
     private int currentQuestionIndex = 0;
     private static final int initial_requested_question_count = 5;
@@ -198,7 +199,9 @@ public class QuizActivity extends AppCompatActivity {
         long rightAnswerId = currentQuestion.question.rightAnswerId;
         long userAnswerId = currentQuestion.answers.get(answerIndex).answerId;
         //TODO: Code duplication, refactor
-        rightAnswerList.add(userAnswerId == rightAnswerId);
+
+        rightAnswersList.add(userAnswerId==rightAnswerId);
+
         answersList.add(userAnswerId);
         if (userAnswerId == rightAnswerId) {
             score++;
@@ -234,7 +237,9 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-        TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()),rightAnswerList);
+
+        TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()), rightAnswersList);
+
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
         setResult(RESULT_OK, resultIntent);
