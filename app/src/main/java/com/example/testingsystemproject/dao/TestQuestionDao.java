@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface TestQuestionDao {
     @Insert
-    void insert(TestQuestion... testQuestions);
+    List<Long> insert(TestQuestion... testQuestions);
 
     @Query("SELECT * FROM testquestion WHERE testId = :testId")
     List<TestQuestion> getTestQuestionsByTestId(int testId);

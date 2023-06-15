@@ -13,10 +13,7 @@ import java.util.List;
 @Dao
 public interface TestDao {
     @Insert
-    void insert(Test... tests);
-
-    @Query("SELECT * FROM test WHERE userId = :userId")
-    List<Test> getTestByUserId(int userId);
+    Long insert(Test test);
 
     @Transaction
     @Query("SELECT * FROM test WHERE userId = :userId")
