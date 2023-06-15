@@ -199,7 +199,9 @@ public class QuizActivity extends AppCompatActivity {
         long rightAnswerId = currentQuestion.question.rightAnswerId;
         long userAnswerId = currentQuestion.answers.get(answerIndex).answerId;
         //TODO: Code duplication, refactor
+
         rightAnswersList.add(userAnswerId==rightAnswerId);
+
         answersList.add(userAnswerId);
         if (userAnswerId == rightAnswerId) {
             score++;
@@ -235,7 +237,9 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
+
         TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()), rightAnswersList);
+
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
         setResult(RESULT_OK, resultIntent);
