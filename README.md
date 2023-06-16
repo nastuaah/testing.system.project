@@ -84,7 +84,7 @@ password пользователь может пройти существующи
 В базе данных (Room - высокоуровневый интерфейс для низкоуровневых привязок SQLite, встроенных в Android) хранится информация о пользователях, вопросы, варианты ответов, ответы пользователя, 
 категории вопросов, секретные вопросы для восстановления аккаунта + прописаны Dao, repositories и models с методами вызовов информации из бд,
 в assets загружены сами вопросы и бд для вопросов, ответов, пользователей.
-#![База данных](https://github.com/nastuaah/testing.system.project/raw/database/baza-dannykh_2/image.png)
+![База данных](https://github.com/nastuaah/testing.system.project/raw/database/baza-dannykh_2.png/image.png)
 
 ## Окружение:
 **ОС:** Android
