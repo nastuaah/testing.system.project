@@ -237,7 +237,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private void finishQuiz() {
 
-        TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()), rightAnswersList);
+        TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()), rightAnswersList, score);
 
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);

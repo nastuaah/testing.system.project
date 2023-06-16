@@ -34,7 +34,7 @@ public class TestRepository {
     public void SaveTestResult(TestResult testResult){
         db.runInTransaction(() -> {
             ;
-            Test test = new Test(testResult.getCategoryId(), testResult.getUserId());
+            Test test = new Test(testResult.getCategoryId(), testResult.getUserId(), testResult.getResult());
             testDao.insert(test);
             for (int i = 0; i < testResult.getQuestionId().size(); i++) {
                 TestQuestion testQuestion = new TestQuestion(testResult.getCategoryId(), testResult.getQuestionId().get(i));

@@ -10,9 +10,10 @@ import androidx.room.PrimaryKey;
         @ForeignKey(entity = User.class, parentColumns = "userId", childColumns = "userId", onDelete = ForeignKey.SET_NULL)
 })
 public class Test {
-    public Test(long categoryId, long userId){
+    public Test(long categoryId, long userId, int result){
         this.categoryId = categoryId;
         this.userId = userId;
+        this.result = result;
     }
     @PrimaryKey(autoGenerate = true)
     public long testId;
@@ -22,4 +23,7 @@ public class Test {
 
     @ColumnInfo(name = "userId")
     public long userId;
+
+    @ColumnInfo(name = "result")
+    public int result;
 }
