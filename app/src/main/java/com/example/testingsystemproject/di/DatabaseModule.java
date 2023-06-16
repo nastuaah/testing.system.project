@@ -74,7 +74,7 @@ public class DatabaseModule {
             ) {
                 String mLine;
                 while ((mLine = reader.readLine()) != null) {
-                    String[] parts = mLine.substring(0, mLine.length()).split("/");
+                    String[] parts = mLine.split("/");
                     int index = Integer.parseInt(parts[2]);
                     String[] answers = parts[1].split(",");
                     int categoryId = Integer.parseInt(fileName.split("\\.")[0]);
