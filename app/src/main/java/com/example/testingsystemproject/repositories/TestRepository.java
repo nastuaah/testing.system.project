@@ -46,4 +46,7 @@ public class TestRepository {
             }
         });
     }
+    public int getUserScore(int userId){
+        return testDao.getUserScore(userId);
+    }
 }

@@ -18,4 +18,7 @@ public interface TestDao {
     @Transaction
     @Query("SELECT * FROM test WHERE userId = :userId")
     List<TestWithUserAnswers> getTestWithUserAnswerByUserId(int userId);
+
+    @Query("SELECT result FROM test WHERE userId = :userId")
+    int getUserScore(int userId);
 }
