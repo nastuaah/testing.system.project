@@ -100,7 +100,7 @@
 
                 <TextView
                     android:id="@+id/text_view_question"
-                    android:layout_width="311dp"
+                    android:layout_width="293dp"
                     android:layout_height="122dp"
                     android:layout_marginTop="60dp"
                     android:layout_marginBottom="16dp"
@@ -120,8 +120,9 @@
                         android:id="@+id/radio_button1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="left"
                         android:text="Option 1"
+                        android:textSize="19dp"
                         android:textColor="#00A4FE"
                         android:textStyle="bold" />
 
@@ -130,6 +131,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Option 2"
+                        android:layout_gravity="left"
+                        android:textSize="19dp"
                         android:textColor="#00A4FE"
                         android:textStyle="bold" />
 
@@ -138,6 +141,8 @@
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:text="Option 3"
+                        android:layout_gravity="left"
+                        android:textSize="19dp"
                         android:textColor="#00A4FE"
                         android:textStyle="bold" />
 

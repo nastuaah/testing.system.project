@@ -198,11 +198,10 @@ public class QuizActivity extends AppCompatActivity {
         QuestionWithAnswer currentQuestion = questionList.get(currentQuestionIndex - 1);
         long rightAnswerId = currentQuestion.question.rightAnswerId;
         long userAnswerId = currentQuestion.answers.get(answerIndex).answerId;
-        //TODO: Code duplication, refactor
 
         rightAnswersList.add(userAnswerId==rightAnswerId);
-
         answersList.add(userAnswerId);
+
         if (userAnswerId == rightAnswerId) {
             score++;
             textViewScore.setText("Score: " + score);
@@ -232,7 +231,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
         radioButtons.get(rightAnswerIndex).setTextColor(Color.GREEN);
-        textViewQuestion.setText("Answer" + (rightAnswerIndex + 1) + " is correct");
+        textViewQuestion.setText("        Answer" + (rightAnswerIndex + 1) + " is correct");
         buttonConfirmNext.setText(currentQuestionIndex < questionList.size() ? "Next" : "Finish");
     }
 

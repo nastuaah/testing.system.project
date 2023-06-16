@@ -35,12 +35,15 @@ public class OptionActivity extends AppCompatActivity {
             btn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00A4FE")));
             btn.setText(category.getName());
             btn.setId(Button.generateViewId());
+            btn.setWidth(800);
+            btn.setHeight(170);
+            btn.setTextSize(20);
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.startToStart = ConstraintSet.PARENT_ID;
             layoutParams.endToEnd = ConstraintSet.PARENT_ID;
             if (previous == null) {
                 layoutParams.topToTop = ConstraintSet.PARENT_ID;
-                layoutParams.topMargin = 50;
+                layoutParams.topMargin = 70;
             }
             else layoutParams.topToBottom = previous.getId();
             btn.setLayoutParams(layoutParams);
