@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.example.testingsystemproject.models.TextUserAnswer;
 import com.example.testingsystemproject.models.UserAnswer;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public interface UserAnswerDao {
 
     @Query("UPDATE useranswer SET user_id = :n WHERE user_id = :userId ")
     int updateByUserId(int n, int userId);
+
+    @Query("SELECT * FROM useranswer WHERE user_id = :userId")
+    List<TextUserAnswer> getUserAnswers(int userId);
 
 
 }

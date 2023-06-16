@@ -2,6 +2,7 @@ package com.example.testingsystemproject.repositories;
 
 import com.example.testingsystemproject.dao.UserAnswerDao;
 import com.example.testingsystemproject.database.AppDatabase;
+import com.example.testingsystemproject.models.TextUserAnswer;
 import com.example.testingsystemproject.models.UserAnswer;
 
 import java.util.List;
@@ -16,5 +17,8 @@ public class UserAnswerRepository {
 
         public List<UserAnswer> getUserAnswersIdByUserID(int userId){
                 return userAnswerDao.getUserAnswersIdByUserID(userId);
+        }
+        public List<TextUserAnswer> getUserAnswers(int userId){
+                return userAnswerDao.getUserAnswers(userId);
         }
 }
