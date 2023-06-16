@@ -23,5 +23,6 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".StartActivity" />
+        <activity android:name=".UserInfoActivity" />
     </application>
 </manifest>

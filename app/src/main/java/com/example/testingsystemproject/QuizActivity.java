@@ -248,7 +248,7 @@ public class QuizActivity extends AppCompatActivity {
 
     public  void showToast(View view){
 
-        Toast toast = Toast.makeText(this, "Your last score:" + score, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(this, "Your score:" + score, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP, 100,460);
         toast.show();
     }
