@@ -18,4 +18,6 @@ public interface UserAnswerDao {
 
     @Query("UPDATE useranswer SET user_id = :n WHERE user_id = :userId ")
     int updateByUserId(int n, int userId);
+
+
 }
