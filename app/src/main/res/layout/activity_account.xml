@@ -149,12 +149,12 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/userInfoLink"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_margin="10dp"
                             android:layout_weight="0.3333"
-                            android:orientation="vertical"
-                            android:onClick="RedirectToUserInfo">
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:layout_width="match_parent"
@@ -165,14 +165,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:onClick="RedirectToUserInfo"
                                 android:background="@drawable/circle_background">
 
                                 <ImageView
-                                    android:id="@+id/RedirectTInfo"
                                     android:layout_width="69dp"
                                     android:layout_height="80dp"
-                                    android:onClick="RedirectToUserInfo"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_bias="0.516"
@@ -180,7 +177,6 @@
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintVertical_bias="0.0"
                                     app:srcCompat="@android:drawable/ic_menu_preferences" />
-
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
@@ -192,8 +188,7 @@
                                 android:textAlignment="center"
                                 android:textColor="@color/colorAccent"
                                 android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:onClick="RedirectToUserInfo"/>
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -358,7 +353,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/BtnBacktoStartActivity"
+            android:id="@+id/btnBackToStartActivity"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center"

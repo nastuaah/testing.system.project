@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.testingsystemproject.models.QuestionWithAnswer;
 import com.example.testingsystemproject.models.User;
 import com.example.testingsystemproject.repositories.UserRepository;
 
@@ -17,12 +16,10 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class AccountActivity extends AppCompatActivity {
-
     private TextView textViewUsersName;
     private TextView textViewUsersResult;
     private TextView textViewUsersLogin;
     private TextView textViewUsersEmail;
-
 
     private final User user = MyApplication.instance.user;
 
@@ -42,16 +39,16 @@ public class AccountActivity extends AppCompatActivity {
         textViewUsersName.setText(user.firstName);
         textViewUsersLogin.setText(user.userName);
         textViewUsersEmail.setText(user.email);
-
-
+        findViewById(R.id.userInfoLink)
+                .setOnClickListener(this::redirectToUserInfo);
     }
 
     public void DeleteAccount (View view){
         userRepository.deleteById(user.userId);
     }
 
-    public void RedirectToUserInfo (View view){
-        Intent myIntent = new Intent(this, UserActivity.class);
+    public void redirectToUserInfo(View view) {
+        Intent myIntent = new Intent(this, UserInfoActivity.class);
         startActivity(myIntent);
     }
     public void RedirectToTestResults(View view) {
@@ -63,5 +60,4 @@ public class AccountActivity extends AppCompatActivity {
     public void redirectToStartActivity(View view) {
         finish();
     }
-
 }

@@ -14,13 +14,19 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.testingsystemproject.dtos.TestResult;
 import com.example.testingsystemproject.models.QuestionWithAnswer;
 import com.example.testingsystemproject.repositories.QuestionRepository;
+import com.example.testingsystemproject.repositories.TestRepository;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -54,7 +60,13 @@ public class QuizActivity extends AppCompatActivity {
     private long timeLeftInMillis;
 
     private long categoryId = -1;
+
     private final ArrayList<QuestionWithAnswer> questionList = new ArrayList<>();
+
+    List answersList = new ArrayList();
+
+    List <Boolean> rightAnswersList = new ArrayList<>();
+
     private int currentQuestionIndex = 0;
     private static final int initial_requested_question_count = 5;
     public final int additional_requested_question_count = 10;
@@ -62,8 +74,12 @@ public class QuizActivity extends AppCompatActivity {
     private long backPressedTime;
     private QuizState state = QuizState.Question;
 
+
     @Inject
     public QuestionRepository questionRepository;
+
+    @Inject
+    public TestRepository testRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,7 +198,10 @@ public class QuizActivity extends AppCompatActivity {
         QuestionWithAnswer currentQuestion = questionList.get(currentQuestionIndex - 1);
         long rightAnswerId = currentQuestion.question.rightAnswerId;
         long userAnswerId = currentQuestion.answers.get(answerIndex).answerId;
-        //TODO: Code duplication, refactor
+
+        rightAnswersList.add(userAnswerId==rightAnswerId);
+        answersList.add(userAnswerId);
+
         if (userAnswerId == rightAnswerId) {
             score++;
             textViewScore.setText("Score: " + score);
@@ -212,11 +231,14 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
         radioButtons.get(rightAnswerIndex).setTextColor(Color.GREEN);
-        textViewQuestion.setText("Answer" + (rightAnswerIndex + 1) + " is correct");
+        textViewQuestion.setText("        Answer" + (rightAnswerIndex + 1) + " is correct");
         buttonConfirmNext.setText(currentQuestionIndex < questionList.size() ? "Next" : "Finish");
     }
 
     private void finishQuiz() {
+
+        TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()), rightAnswersList, score);
+
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
         setResult(RESULT_OK, resultIntent);
@@ -226,7 +248,7 @@ public class QuizActivity extends AppCompatActivity {
 
     public  void showToast(View view){
 
-        Toast toast = Toast.makeText(this, "Your last score:" + score, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(this, "Your score:" + score, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP, 100,460);
         toast.show();
     }
@@ -249,4 +271,5 @@ public class QuizActivity extends AppCompatActivity {
             countDownTimer.cancel();
         }
     }
+
 }
