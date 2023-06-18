@@ -38,5 +38,6 @@ public class TestResult {
     public List<Boolean> getAnsweredCorrectly() {
         return answeredCorrectly;
     }
+
     public  int getResult(){return result;}
 }

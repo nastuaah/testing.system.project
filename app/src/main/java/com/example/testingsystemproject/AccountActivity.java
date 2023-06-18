@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testingsystemproject.models.User;
+import com.example.testingsystemproject.repositories.UserAnswerRepository;
 import com.example.testingsystemproject.repositories.UserRepository;
 
 import javax.inject.Inject;
@@ -25,6 +26,9 @@ public class AccountActivity extends AppCompatActivity {
 
     @Inject
     public UserRepository userRepository;
+
+    @Inject
+    public UserAnswerRepository userAnswerRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class AccountActivity extends AppCompatActivity {
 
     public void DeleteAccount (View view){
         userRepository.deleteById(user.userId);
+        userAnswerRepository.updateByUserId(1, user.userId);
     }
 
     public void redirectToUserInfo(View view) {

@@ -5,8 +5,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
+import com.example.testingsystemproject.dao.binding_types.TestWithQuestions;
 import com.example.testingsystemproject.models.Test;
-import com.example.testingsystemproject.models.TestWithUserAnswers;
 
 import java.util.List;
 
@@ -17,5 +17,5 @@ public interface TestDao {
 
     @Transaction
     @Query("SELECT * FROM test WHERE userId = :userId")
-    List<TestWithUserAnswers> getTestWithUserAnswerByUserId(int userId);
+    List<TestWithQuestions> getTestWithAnswersByUserId(long userId);
 }
