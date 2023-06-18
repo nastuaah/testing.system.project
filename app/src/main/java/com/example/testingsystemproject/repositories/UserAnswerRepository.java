@@ -11,4 +11,8 @@ public class UserAnswerRepository {
         public UserAnswerRepository(AppDatabase appDatabase) {
                 userAnswerDao = appDatabase.userAnswerDao();
         }
+
+        public void softDeleteUser(long userId) {
+                userAnswerDao.softDeleteByUserId(userId);
+        }
 }

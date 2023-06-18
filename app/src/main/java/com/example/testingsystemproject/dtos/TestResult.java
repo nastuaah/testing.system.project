@@ -23,21 +23,27 @@ public class TestResult {
         return userId;
     }
 
-    public List<Long> getAnswerId() {
-        return answerId;
+    public Long getAnswerId(int i) {
+        return answerId.get(i);
     }
 
-    public List<Long> getQuestionId() {
-        return questionId;
+    public Long getQuestionId(int i) {
+        return questionId.get(i);
     }
 
     public long getCategoryId() {
         return categoryId;
     }
 
-    public List<Boolean> getAnsweredCorrectly() {
-        return answeredCorrectly;
+    public int getSize() {
+        return questionId.size();
     }
 
-    public  int getResult(){return result;}
+    public Boolean getAnsweredCorrectly(int i) {
+        return answeredCorrectly.get(i);
+    }
+
+    public int getResult() {
+        return result;
+    }
 }

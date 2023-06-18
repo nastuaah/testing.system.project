@@ -15,18 +15,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.testingsystemproject.dao.binding_types.QuestionWithAnswer;
 import com.example.testingsystemproject.dtos.TestResult;
-import com.example.testingsystemproject.models.QuestionWithAnswer;
 import com.example.testingsystemproject.repositories.QuestionRepository;
 import com.example.testingsystemproject.repositories.TestRepository;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -63,7 +60,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private final ArrayList<QuestionWithAnswer> questionList = new ArrayList<>();
 
-    List answersList = new ArrayList();
+    List<Long> answersList = new ArrayList<>();
 
     List <Boolean> rightAnswersList = new ArrayList<>();
 
@@ -236,9 +233,15 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-
-        TestResult usersResult = new TestResult(categoryId,MyApplication.instance.user.userId,answersList,questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()), rightAnswersList, score);
-
+        TestResult testResult = new TestResult(
+                categoryId,
+                MyApplication.instance.user.userId,
+                answersList,
+                questionList.stream().map(x -> x.question.questionId).collect(Collectors.toList()),
+                rightAnswersList,
+                score
+        );
+        testRepository.saveTestResult(testResult);
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
         setResult(RESULT_OK, resultIntent);
@@ -246,8 +249,7 @@ public class QuizActivity extends AppCompatActivity {
         finish();
     }
 
-    public  void showToast(View view){
-
+    public void showToast(View view){
         Toast toast = Toast.makeText(this, "Your score:" + score, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP, 100,460);
         toast.show();

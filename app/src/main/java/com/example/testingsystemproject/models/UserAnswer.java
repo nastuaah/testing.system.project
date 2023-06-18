@@ -11,9 +11,10 @@ import androidx.room.PrimaryKey;
         @ForeignKey(entity = Question.class, parentColumns = "questionId", childColumns = "questionId", onDelete = ForeignKey.SET_NULL)}
 )
 public class UserAnswer {
-    public UserAnswer(long answerId, long userId, boolean rightAnswer){
+    public UserAnswer(long answerId, long userId, long questionId, boolean rightAnswer){
         this.answerId = answerId;
         this.userId = userId;
+        this.questionId = questionId;
         this.rightAnswer = rightAnswer;
     }
 

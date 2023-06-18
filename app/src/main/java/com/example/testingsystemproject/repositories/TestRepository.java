@@ -34,17 +34,21 @@ public class TestRepository {
         this.userAnswerDao = appDatabase.userAnswerDao();
         this.categoryDao = appDatabase.categoryDao();
     }
-    public void SaveTestResult(TestResult testResult){
+    public void saveTestResult(TestResult testResult){
         db.runInTransaction(() -> {
-            ;
-            Test test = new Test(testResult.getCategoryId(), testResult.getUserId());
-            testDao.insert(test);
-            for (int i = 0; i < testResult.getQuestionId().size(); i++) {
-                TestQuestion testQuestion = new TestQuestion(testResult.getCategoryId(), testResult.getQuestionId().get(i));
+            Test test = new Test(testResult.getCategoryId(), testResult.getUserId(), testResult.getResult());
+            Long testId  = testDao.insert(test);
+            for (int i = 0; i < testResult.getSize(); i++) {
+                TestQuestion testQuestion = new TestQuestion(testResult.getQuestionId(i), testId);
                 testQuestionDao.insert(testQuestion);
             }
-            for (int i = 0; i < testResult.getAnswerId().size(); i++) {
-                UserAnswer userAnswer = new UserAnswer(testResult.getUserId(), testResult.getAnswerId().get(i), testResult.getAnsweredCorrectly().get(i));
+            for (int i = 0; i < testResult.getSize(); i++) {
+                UserAnswer userAnswer = new UserAnswer(
+                        testResult.getAnswerId(i),
+                        testResult.getUserId(),
+                        testResult.getQuestionId(i),
+                        testResult.getAnsweredCorrectly(i)
+                );
                 userAnswerDao.insert(userAnswer);
             }
         });
@@ -52,11 +56,12 @@ public class TestRepository {
 
     public List<UserTestResultResponse> getUserTestResults(long userId) {
         List<TestWithQuestions> testsWithQuestions = testDao.getTestWithAnswersByUserId(userId);
-        ArrayList<UserTestResultResponse> resultResponses = categoryDao.getAll().stream().map(x -> new UserTestResultResponse(x.getName())).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<UserTestResultResponse> resultResponses = categoryDao.getAll()
+                .stream().map(x -> new UserTestResultResponse(x.getName())).collect(Collectors.toCollection(ArrayList::new));
         for (TestWithQuestions test: testsWithQuestions) {
             List<UserAnswerDao.UserAnswerResponse> answers = test.questions.stream().map(x -> this.userAnswerDao.userAnswerTextByQuestionIdAndUserId(userId, x.questionId)).collect(Collectors.toList());
             for (int i = 0; i < test.questions.size(); i++) {
-                resultResponses.get((int) test.test.categoryId)
+                resultResponses.get((int) (test.test.categoryId - 1))
                         .questionAnswerResults
                         .add(new UserTestResultResponse.QuestionAnswerResult(test.questions.get(i).question, answers.get(i).answer, answers.get(i).rightAnswer));
             }

@@ -47,9 +47,8 @@ public class AccountActivity extends AppCompatActivity {
                 .setOnClickListener(this::redirectToUserInfo);
     }
 
-    public void DeleteAccount (View view){
+    public void deleteAccount(View view){
         userRepository.deleteById(user.userId);
-        userAnswerRepository.updateByUserId(1, user.userId);
     }
 
     public void redirectToUserInfo(View view) {
