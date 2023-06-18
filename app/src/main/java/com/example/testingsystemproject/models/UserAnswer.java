@@ -6,8 +6,9 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
-        @ForeignKey(entity = Answer.class, parentColumns = "answerId", childColumns = "answer_id", onDelete = ForeignKey.SET_NULL),
-        @ForeignKey(entity = User.class, parentColumns = "userId", childColumns = "user_id", onDelete = ForeignKey.SET_NULL)}
+        @ForeignKey(entity = Answer.class, parentColumns = "answerId", childColumns = "answerId", onDelete = ForeignKey.SET_NULL),
+        @ForeignKey(entity = User.class, parentColumns = "userId", childColumns = "userId", onDelete = ForeignKey.SET_NULL),
+        @ForeignKey(entity = Question.class, parentColumns = "questionId", childColumns = "questionId", onDelete = ForeignKey.SET_NULL)}
 )
 public class UserAnswer {
     public UserAnswer(long answerId, long userId, boolean rightAnswer){
@@ -19,11 +20,14 @@ public class UserAnswer {
     @PrimaryKey(autoGenerate = true)
     public long userAnswerId;
 
-    @ColumnInfo(name = "answer_id")
+    @ColumnInfo(name = "answerId")
     public long answerId;
 
-    @ColumnInfo(name = "user_id")
+    @ColumnInfo(name = "userId")
     public long userId;
+
+    @ColumnInfo(name = "questionId")
+    public long questionId;
 
     @ColumnInfo(name = "rightAnswer")
     public boolean rightAnswer;

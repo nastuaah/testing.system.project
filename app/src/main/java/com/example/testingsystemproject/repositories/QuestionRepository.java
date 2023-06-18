@@ -2,7 +2,7 @@ package com.example.testingsystemproject.repositories;
 
 import com.example.testingsystemproject.dao.QuestionDao;
 import com.example.testingsystemproject.database.AppDatabase;
-import com.example.testingsystemproject.models.QuestionWithAnswer;
+import com.example.testingsystemproject.dao.binding_types.QuestionWithAnswer;
 
 import java.util.List;
 
