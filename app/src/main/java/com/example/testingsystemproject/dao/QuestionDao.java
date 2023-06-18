@@ -7,7 +7,7 @@ import androidx.room.Transaction;
 
 import com.example.testingsystemproject.models.Answer;
 import com.example.testingsystemproject.models.Question;
-import com.example.testingsystemproject.models.QuestionWithAnswer;
+import com.example.testingsystemproject.dao.binding_types.QuestionWithAnswer;
 
 import java.util.List;
 
