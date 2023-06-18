@@ -29,7 +29,6 @@ public class OptionActivity extends AppCompatActivity {
         if (categoryRepository == null) return;
         ConstraintLayout btnBlock = findViewById(R.id.selectCategoryButtonLayout);
         List<Category> categories = categoryRepository.getAll();
-        categories.add(new Category("Финальный тест"));
         for (Category category: categories) {
             MaterialButton btn = new MaterialButton(this);
             btn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00A4FE")));

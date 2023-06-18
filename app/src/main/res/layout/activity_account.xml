@@ -320,17 +320,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Result:"
+                            android:text="Phone number:"
                             android:textColor="#00A5FF"
                             android:textSize="24sp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/LastScore"
+                            android:id="@+id/UsersPhone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="100%"
+                            android:text="900-"
                             android:textAlignment="viewEnd"
                             android:textColor="#5B5B5B"
                             android:textSize="18sp" />

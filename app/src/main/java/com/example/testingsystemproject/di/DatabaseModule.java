@@ -48,16 +48,17 @@ public class DatabaseModule {
     private static void prepopulate(AppDatabase db) {
         db.runInTransaction(() -> {
             db.securityQuestionDao().insert(
-                    new SecurityQuestion("Option 1"),
-                    new SecurityQuestion("Option 2"),
-                    new SecurityQuestion("Option 3")
+                    new SecurityQuestion("What is the name of your pet?"),
+                    new SecurityQuestion("What is your favourite color?"),
+                    new SecurityQuestion("What is your favourite meal?")
             );
             db.categoryDao().insert(
                     new Category("Животные"),
                     new Category("Люди"),
                     new Category("Случайные"),
                     new Category("Музыка"),
-                    new Category("Спорт")
+                    new Category("Спорт"),
+                    new Category("Финальный тест")
             );
             try {
                 prepopulateQuestions(db);

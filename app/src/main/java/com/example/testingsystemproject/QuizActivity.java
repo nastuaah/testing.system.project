@@ -86,7 +86,7 @@ public class QuizActivity extends AppCompatActivity {
 
         textColorDefaultRadioButtons = radioButtons.get(0).getTextColors();
         textColorDefaultCoolDown = textViewCountDown.getTextColors();
-        categoryId = getIntent().getIntExtra("categoryId", -1);
+        categoryId = getIntent().getLongExtra("categoryId", -1);
         getNewQuestions(initial_requested_question_count);
         showNextQuestion();
         buttonConfirmNext.setOnClickListener(this::onNextButton);

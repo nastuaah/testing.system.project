@@ -1,5 +1,6 @@
 package com.example.testingsystemproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testingsystemproject.models.User;
+import com.example.testingsystemproject.repositories.TestRepository;
 import com.example.testingsystemproject.repositories.UserAnswerRepository;
 import com.example.testingsystemproject.repositories.UserRepository;
 
@@ -18,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class AccountActivity extends AppCompatActivity {
     private TextView textViewUsersName;
-    private TextView textViewUsersResult;
+    private TextView textViewUsersPhoneNumber;
     private TextView textViewUsersLogin;
     private TextView textViewUsersEmail;
 
@@ -27,9 +29,14 @@ public class AccountActivity extends AppCompatActivity {
     @Inject
     public UserRepository userRepository;
 
+
+    @Inject
+    public TestRepository testRepository;
+
     @Inject
     public UserAnswerRepository userAnswerRepository;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,19 +44,20 @@ public class AccountActivity extends AppCompatActivity {
 
         textViewUsersEmail = findViewById(R.id.UsersEmail);
         textViewUsersName = findViewById(R.id.UsersName);
-        textViewUsersResult = findViewById(R.id.LastScore);
+        textViewUsersPhoneNumber= findViewById(R.id.UsersPhone);
         textViewUsersLogin = findViewById(R.id.UsersLogin);
 
         textViewUsersName.setText(user.firstName);
         textViewUsersLogin.setText(user.userName);
         textViewUsersEmail.setText(user.email);
+        textViewUsersPhoneNumber.setText(user.mobileNumber);
         findViewById(R.id.userInfoLink)
                 .setOnClickListener(this::redirectToUserInfo);
+
     }
 
     public void deleteAccount(View view){
-        userRepository.deleteById(user.userId);
-    }
+        userRepository.deleteById(user.userId);}
 
     public void redirectToUserInfo(View view) {
         Intent myIntent = new Intent(this, UserInfoActivity.class);
